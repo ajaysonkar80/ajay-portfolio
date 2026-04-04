@@ -43,11 +43,11 @@ export default function Projects() {
 
         {/* Header */}
         <div className="mb-14">
-          <Badge className="badge-blue mb-4 border-0">Selected Work</Badge>
+          <span className="badge-blue mb-4">Selected Work</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Projects That <span className="text-neon">Deliver</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl">
+          <p className="text-[#64748b] text-lg max-w-xl">
             Real products built for real businesses — not just demos.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function Projects() {
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-[#64748b] text-sm leading-relaxed mb-4">
                   {p.description}
                 </p>
 
@@ -111,7 +111,7 @@ export default function Projects() {
                     <Button
                       asChild
                       variant="ghost"
-                      className="h-auto px-0 text-xs font-semibold hover:bg-transparent text-muted-foreground hover:text-white transition-colors"
+                      className="h-auto px-0 text-xs font-semibold hover:bg-transparent text-[#64748b] hover:text-white transition-colors"
                     >
                       <Link href={p.githubUrl}>GitHub →</Link>
                     </Button>

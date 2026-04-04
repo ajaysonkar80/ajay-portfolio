@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
 
       {/* Background mesh */}
       <div
@@ -90,7 +90,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <p
-          className="text-muted-foreground mx-auto mb-10 leading-relaxed"
+          className="text-[#64748b] mx-auto mb-10 leading-relaxed"
           style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", maxWidth: "520px" }}
         >
           I help local businesses and startups in Raipur get more leads, save
@@ -125,7 +125,7 @@ export default function Hero() {
             "💰 Starts at ₹3,000/mo",
             "📋 Min. 6-month contracts",
           ].map((item) => (
-            <span key={item} className="text-sm text-muted-foreground">
+            <span key={item} className="text-sm text-[#64748b]">
               {item}
             </span>
           ))}
@@ -134,7 +134,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-muted-foreground tracking-widest uppercase">Scroll</span>
+        <span className="text-xs text-[#64748b] tracking-widest uppercase">Scroll</span>
         <div className="w-px h-10" style={{ background: "linear-gradient(to bottom, rgba(0,212,255,0.5), transparent)" }} />
       </div>
     </section>

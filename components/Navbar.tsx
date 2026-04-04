@@ -43,7 +43,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground hover:text-white transition-colors duration-200 no-underline"
+              className="text-sm text-[#64748b] hover:text-white transition-colors duration-200 no-underline"
             >
               {l.label}
             </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-sm text-muted-foreground hover:text-white no-underline"
+              className="block py-3 text-sm text-[#64748b] hover:text-white no-underline"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
             >
               {l.label}

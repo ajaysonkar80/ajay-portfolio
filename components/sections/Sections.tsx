@@ -20,11 +20,11 @@ export function Process() {
     <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="mb-14">
-          <Badge className="badge-amber mb-4 border-0">How It Works</Badge>
+          <span className="badge-blue mb-4">How it works</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             From Idea to <span className="text-neon">Live Product</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl">
+          <p className="text-[#64748b] text-lg max-w-xl">
             A simple 4-step process — no jargon, no confusion.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function Process() {
                   {s.num}
                 </div>
                 <div className="text-white font-semibold text-sm mb-2">{s.title}</div>
-                <div className="text-muted-foreground text-sm leading-relaxed">{s.desc}</div>
+                <div className="text-[#64748b] text-sm leading-relaxed">{s.desc}</div>
               </CardContent>
             </Card>
           ))}
@@ -74,7 +74,7 @@ export function Metrics() {
                 >
                   {m.val}
                 </div>
-                <div className="text-muted-foreground text-xs">{m.label}</div>
+                <div className="text-[#64748b] text-xs">{m.label}</div>
               </CardContent>
             </Card>
           ))}
@@ -114,7 +114,7 @@ export function Testimonials() {
     <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-14">
-          <Badge className="badge-blue mb-4 border-0">Social Proof</Badge>
+          <span className="badge-blue mb-4">Social Proof</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             What <span className="text-amber">Clients Say</span>
           </h2>
@@ -140,7 +140,7 @@ export function Testimonials() {
                   </div>
                   <div>
                     <div className="text-white text-sm font-semibold">{t.name}</div>
-                    <div className="text-muted-foreground text-xs">{t.company}</div>
+                    <div className="text-[#64748b] text-xs">{t.company}</div>
                   </div>
                 </div>
               </CardContent>
@@ -183,7 +183,7 @@ export function BlogPreview() {
       <div className="max-w-5xl mx-auto">
         <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
           <div>
-            <Badge className="badge-blue mb-4 border-0">From the Blog</Badge>
+            <span className="badge-blue mb-4">From the Blog</span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
               Insights for <span className="text-neon">Local Businesses</span>
             </h2>
@@ -210,7 +210,7 @@ export function BlogPreview() {
                 <h3 className="font-heading text-base font-bold text-white leading-snug">
                   {p.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                <p className="text-[#64748b] text-sm leading-relaxed flex-1">
                   {p.excerpt}
                 </p>
                 <Button
@@ -247,7 +247,7 @@ export function FAQ() {
     <section className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
-          <Badge className="badge-blue mb-4 border-0">FAQ</Badge>
+          <span className="badge-blue mb-4">FAQ</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Common <span className="text-amber">Questions</span>
           </h2>
@@ -271,7 +271,7 @@ export function FAQ() {
                 </span>
               </button>
               {open === i && (
-                <p className="text-muted-foreground text-sm leading-relaxed pb-5">
+                <p className="text-[#64748b] text-sm leading-relaxed pb-5">
                   {faq.a}
                 </p>
               )}

@@ -49,12 +49,12 @@ export default function Services() {
 
         {/* Header */}
         <div className="mb-8">
-          <Badge className="badge-amber mb-4 border-0">What I Offer</Badge>
+          <span className="badge-blue mb-4">What I Offer</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Services Built for{" "}
             <span className="text-amber">Real Results</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl">
+          <p className="text-[#64748b] text-lg max-w-xl">
             Not just pretty websites — systems that bring in actual business.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function Services() {
             <div className="text-white font-semibold text-sm mb-1">
               📋 Minimum 6-Month Contract — All Services
             </div>
-            <div className="text-muted-foreground text-sm leading-relaxed">
+            <div className="text-[#64748b] text-sm leading-relaxed">
               All services require a minimum commitment of 6 months. This ensures
               enough time to deliver measurable results and build systems that
               actually work long-term for your business.
@@ -82,7 +82,7 @@ export default function Services() {
             style={{ background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.2)" }}
           >
             <div className="text-neon font-bold text-lg leading-tight">6 mo</div>
-            <div className="text-muted-foreground text-xs">minimum</div>
+            <div className="text-[#64748b] text-xs">minimum</div>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export default function Services() {
             <div className="text-amber font-semibold text-sm mb-1">
               🎁 Volume Discounts — Longer Contracts
             </div>
-            <div className="text-muted-foreground text-sm">
+            <div className="text-[#64748b] text-sm">
               Commit longer and save more. Discounts applied automatically.
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function Services() {
                 >
                   {d.discount}
                 </div>
-                <div className="text-muted-foreground text-xs mt-0.5">{d.period}</div>
+                <div className="text-[#64748b] text-xs mt-0.5">{d.period}</div>
               </div>
             ))}
           </div>
@@ -150,7 +150,7 @@ export default function Services() {
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-[#64748b] text-sm leading-relaxed">
                   {s.description}
                 </p>
 

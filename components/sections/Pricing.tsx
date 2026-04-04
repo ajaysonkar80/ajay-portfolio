@@ -75,11 +75,11 @@ export default function Pricing() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <Badge className="badge-amber mb-4 border-0">Transparent Pricing</Badge>
+          <span className="badge-blue mb-4">Transparent Pricing</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Simple, <span className="text-amber">Monthly Plans</span>
           </h2>
-          <p className="text-muted-foreground text-base max-w-md mx-auto">
+          <p className="text-[#64748b] text-base max-w-md mx-auto">
             No hidden charges. Minimum 6-month commitment. Volume discounts for longer contracts.
           </p>
         </div>
@@ -141,7 +141,7 @@ export default function Pricing() {
                 >
                   {plan.price}
                 </div>
-                <div className="text-muted-foreground text-sm">
+                <div className="text-[#64748b] text-sm">
                   {plan.period} — {plan.subtitle}
                 </div>
               </CardHeader>
@@ -209,7 +209,7 @@ export default function Pricing() {
           <CardContent className="p-5 flex items-center justify-between flex-wrap gap-4">
             <div>
               <div className="text-white font-semibold text-sm">Need a custom one-time project?</div>
-              <div className="text-muted-foreground text-sm mt-1">
+              <div className="text-[#64748b] text-sm mt-1">
                 Audits, landing pages, SaaS builds — let&apos;s scope it out. No long-term commitment required.
               </div>
             </div>
