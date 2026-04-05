@@ -3,15 +3,11 @@ import { contactSchema } from "@/server/validation/contact.schema";
 import { leadService } from "@/server/services/lead.service";
 import { contactRatelimit, getClientIp } from "@/server/redis/ratelimit";
 
-// ─── POST /api/contact ────────────────────────────────────────────────────────
-// Flow: parse → validate → rate limit → save lead → send emails → respond
-
 export async function POST(request: NextRequest) {
   try {
-    // 1 — Parse body
     const body = await request.json();
 
-    // 2 — Validate with Zod
+    // 1 — Validate with Zod
     const parsed = contactSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -24,7 +20,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3 — Rate limit (5 requests per IP per minute)
+    // 2 — Rate limit (5 per IP per minute)
     const ip = getClientIp(request);
     const { success: allowed, remaining } = await contactRatelimit.limit(ip);
 
@@ -34,43 +30,34 @@ export async function POST(request: NextRequest) {
           success: false,
           message: "Too many requests. Please wait a minute and try again.",
         },
-        {
-          status:  429,
-          headers: { "Retry-After": "60" },
-        }
+        { status: 429, headers: { "Retry-After": "60" } }
       );
     }
 
-    // 4 — Save lead + send emails
+    // 3 — Save to DB + send notification + send auto-reply
     const lead = await leadService.createLead(parsed.data);
 
-    // 5 — Success response
     return NextResponse.json(
       {
         success: true,
-        message: "Thanks! I'll get back to you within 24 hours.",
+        message: "Thanks! I'll get back to you within 24 hours. Check your email for confirmation.",
         leadId:  lead.id,
       },
-      {
-        status:  201,
-        headers: { "X-RateLimit-Remaining": String(remaining) },
-      }
+      { status: 201, headers: { "X-RateLimit-Remaining": String(remaining) } }
     );
 
   } catch (error) {
-    console.error("[/api/contact] Unexpected error:", error);
-
+    console.error("[POST /api/contact]", error);
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong. Please try WhatsApp or email instead.",
+        message: "Something went wrong. Please reach out via WhatsApp or email instead.",
       },
       { status: 500 }
     );
   }
 }
 
-// Block all non-POST methods
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
 }

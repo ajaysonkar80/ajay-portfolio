@@ -162,7 +162,7 @@ export default function ContactForm() {
                     <label className={labelClass}>Phone Number</label>
                     <input
                       className="input-neon"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 XXXXXXXXXX"
                       value={form.phone}
                       onChange={(e) => setField("phone", e.target.value)}
                     />
@@ -175,30 +175,13 @@ export default function ContactForm() {
                   <input
                     type="email"
                     className="input-neon"
-                    placeholder="rahul@company.com"
+                    placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setField("email", e.target.value)}
                     required
                   />
                   {errors.email && <p className={errClass}>{errors.email[0]}</p>}
                 </div>
-
-                {/* Location */}
-                <div>
-                  <label className={labelClass}>Your Location</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <select className="input-neon" value={form.country} onChange={(e) => setField("country", e.target.value)} style={{ background: "#0d1117" }}>
-                      {countries.map((c) => <option key={c.code} value={c.code}>{c.label}</option>)}
-                    </select>
-                    <select className="input-neon" value={form.state} onChange={(e) => setField("state", e.target.value)} style={{ background: "#0d1117" }}>
-                      {indianStates.map((s) => <option key={s} value={s}>{s}</option>)}
-                    </select>
-                    <select className="input-neon" value={form.city} onChange={(e) => setField("city", e.target.value)} style={{ background: "#0d1117" }}>
-                      {cgCities.map((c) => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                  </div>
-                </div>
-
                 {/* Service Tier */}
                 <div>
                   <label className={labelClass}>Preferred Plan</label>
@@ -221,23 +204,9 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                {/* Service Type */}
-                <div>
-                  <label className={labelClass}>What do you need?</label>
-                  <select
-                    className="input-neon"
-                    value={form.serviceType}
-                    onChange={(e) => setField("serviceType", e.target.value)}
-                    style={{ background: "#0d1117" }}
-                  >
-                    <option value="">Select a service...</option>
-                    {serviceTypes.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-
                 {/* Project outline */}
                 <div>
-                  <label className={labelClass}>Tell me about your project *</label>
+                  <label className={labelClass}>Message</label>
                   <textarea
                     className="input-neon"
                     placeholder="Describe your business, what you want to achieve, and any specific requirements..."
@@ -245,7 +214,7 @@ export default function ContactForm() {
                     style={{ resize: "none" }}
                     value={form.projectOutline}
                     onChange={(e) => setField("projectOutline", e.target.value)}
-                    required
+                    
                   />
                   {errors.projectOutline && <p className={errClass}>{errors.projectOutline[0]}</p>}
                 </div>
@@ -280,7 +249,7 @@ export default function ContactForm() {
                 <div className="text-center text-sm text-[#64748b] pt-1">
                   Prefer to talk directly?&nbsp;
                   <Button asChild variant="link" className="h-auto p-0 text-sm font-semibold" style={{ color: "#00D4FF" }}>
-                    <Link href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp</Link>
+                    <Link href="https://wa.me/918319928445" target="_blank" rel="noreferrer">WhatsApp</Link>
                   </Button>
                   &nbsp;·&nbsp;
                   <Button asChild variant="link" className="h-auto p-0 text-sm font-semibold" style={{ color: "#F59E0B" }}>
