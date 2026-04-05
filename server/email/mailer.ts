@@ -129,8 +129,20 @@ function buildAutoReplyHtml(name: string): string {
 
       <div style="padding:28px 32px;font-size:15px;color:#18181b;line-height:1.8">
         <p>Hi <strong>${name}</strong>,</p>
+
+        <p>I specialize in building fast, high-converting websites for businesses and startups.</p>
+
         <p>Thanks for reaching out! I've received your inquiry and will get back to you <strong>within 24 hours</strong> with a clear plan.</p>
-        <p>In the meantime, feel free to WhatsApp me directly for a faster response.</p>
+
+        <p>For faster communication, you can message me directly on WhatsApp:</p>
+
+        <div style="margin:20px 0;text-align:center">
+          <a href="https://wa.me/918319928445?text=Hi%20Ajay,%20I%20need%20a%20website"
+             style="background:#25D366;color:#ffffff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:600;display:inline-block;font-size:14px">
+            Chat on WhatsApp (+91 83199 28445)
+          </a>
+        </div>
+
         <p style="margin-top:24px">Talk soon,<br><strong>Ajay Sonkar</strong><br>
         <span style="color:#64748b;font-size:13px">hello@ajaysonkar.com · ajaysonkar.com</span></p>
       </div>

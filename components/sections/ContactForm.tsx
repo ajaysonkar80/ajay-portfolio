@@ -159,11 +159,12 @@ export default function ContactForm() {
                     {errors.name && <p className={errClass}>{errors.name[0]}</p>}
                   </div>
                   <div>
-                    <label className={labelClass}>Phone Number</label>
+                    <label className={labelClass}>Phone Number *</label>
                     <input
                       className="input-neon"
                       placeholder="+91 XXXXXXXXXX"
                       value={form.phone}
+                      required
                       onChange={(e) => setField("phone", e.target.value)}
                     />
                   </div>
