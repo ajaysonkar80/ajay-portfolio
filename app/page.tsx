@@ -84,12 +84,6 @@ export default function HomePage() {
       <Divider />
       <Projects />
       <Divider />
-      <Metrics />
-      <Divider />
-      <Testimonials />
-      <Divider />
-      <BlogPreview />
-      <Divider />
       <ContactForm />
       <Divider />
       <FAQ />

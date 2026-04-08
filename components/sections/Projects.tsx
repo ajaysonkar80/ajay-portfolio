@@ -5,42 +5,43 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
   {
-    title:       "LaTeX Lens",
-    description: "AI system that converts images and PDFs into accurate LaTeX code using vision models. Built and shipped end-to-end.",
-    tags:        ["React","React Router", "Gemini",  "TypeScript"],
-    tagStyle:    "blue",
-    badge:       "AI · SaaS",
-    badgeStyle:  "blue",
-    liveUrl:     "https://latex-lens.vercel.app/",
-    githubUrl:   "https://github.com/ajaysonkar80/latex-lens",
+    title: "LaTeX Lens",
+    description:
+      "AI system that converts images and PDFs into accurate LaTeX code using vision models. Built and shipped end-to-end.",
+    tags: ["React", "React Router", "Gemini", "TypeScript"],
+    tagStyle: "blue",
+    badge: "AI · SaaS",
+    badgeStyle: "blue",
+    liveUrl: "https://latex-lens.vercel.app/",
+    githubUrl: "https://github.com/ajaysonkar80/latex-lens",
   },
   {
-    title:       "Gaurav Solar Sky",
-    description: "Solar business website with lead capture form. Client receives WhatsApp and email inquiries directly from the site.",
-    tags:        ["Next.js", "Tailwind", "Zoho Mail"],
-    tagStyle:    "amber",
-    badge:       "Local Business",
-    badgeStyle:  "amber",
-    liveUrl:     "Under Development",
-    githubUrl:   null,
+    title: "Gaurav Solar Sky",
+    description:
+      "Solar business website with lead capture form. Client receives WhatsApp and email inquiries directly from the site.",
+    tags: ["Next.js", "Tailwind", "Zoho Mail"],
+    tagStyle: "amber",
+    badge: "Under Development",
+    badgeStyle: "amber",
+    liveUrl: "Under Development",
+    githubUrl: null,
   },
   {
-    title:       "Taste Kissey",
+    title: "Taste Kissey",
     description: "Flavoured Lassi Startup",
-    tags:        ["Next.js", "Framer Motion", "Vercel"],
-    tagStyle:    "blue",
-    badge:       "Startup Brand",
-    badgeStyle:  "blue",
-    liveUrl:     "#",
-    githubUrl:   "#",
-  }
+    tags: ["Next.js", "Framer Motion", "Vercel"],
+    tagStyle: "blue",
+    badge: "Under Development",
+    badgeStyle: "blue",
+    liveUrl: "Under Development",
+    githubUrl: "#",
+  },
 ];
 
 export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-
         {/* Header */}
         <div className="mb-14">
           <span className="badge-blue mb-4">Selected Work</span>
@@ -54,72 +55,131 @@ export default function Projects() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {projects.map((p) => (
-            <Card
-              key={p.title}
-              className={`glass-hover border-0 bg-transparent ${p.tagStyle === "amber" ? "glass-amber" : "glass"}`}
-            >
-              <CardContent className="p-5">
-                {/* Image placeholder */}
-                <div
-                  className="w-full rounded-lg mb-4 flex items-center justify-center text-sm font-mono"
-                  style={{
-                    height:     "120px",
-                    background: p.tagStyle === "amber" ? "rgba(245,158,11,0.06)" : "rgba(0,212,255,0.06)",
-                    border:     p.tagStyle === "amber" ? "1px solid rgba(245,158,11,0.1)" : "1px solid rgba(0,212,255,0.1)",
-                    color:      p.tagStyle === "amber" ? "#F59E0B" : "#00D4FF",
-                  }}
-                >
-                  {p.title}
-                </div>
+          {projects.map((p) => {
+            const isClickable = p.liveUrl && p.liveUrl.startsWith("http");
+            const isUnderDev = p.badge === "Under Development";
 
-                {/* Title row */}
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-heading text-base font-bold text-white">{p.title}</h3>
-                  <Badge
-                    className={`${p.badgeStyle === "amber" ? "badge-amber" : "badge-blue"} border-0 text-[10px]`}
+            // Card component – shared styling for all projects
+            const card = (
+              <Card
+                className={`glass-hover border-0 bg-transparent ${
+                  p.tagStyle === "amber" ? "glass-amber" : "glass"
+                } ${isUnderDev ? "opacity-50 grayscale cursor-not-allowed" : ""} cursor-pointer`}
+              >
+                <CardContent className="p-5">
+                  {/* Image placeholder */}
+                  <div
+                    className="w-full rounded-lg mb-4 flex items-center justify-center text-sm font-mono"
+                    style={{
+                      height: "120px",
+                      background:
+                        p.tagStyle === "amber"
+                          ? "rgba(245,158,11,0.06)"
+                          : "rgba(0,212,255,0.06)",
+                      border:
+                        p.tagStyle === "amber"
+                          ? "1px solid rgba(245,158,11,0.1)"
+                          : "1px solid rgba(0,212,255,0.1)",
+                      color:
+                        p.tagStyle === "amber"
+                          ? "#F59E0B"
+                          : "#00D4FF",
+                    }}
                   >
-                    {p.badge}
-                  </Badge>
-                </div>
+                    {p.title}
+                  </div>
 
-                {/* Description */}
-                <p className="text-[#64748b] text-sm leading-relaxed mb-4">
-                  {p.description}
-                </p>
-
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {p.tags.map((t) => (
-                    <span key={t} className={p.tagStyle === "amber" ? "tech-pill-amber" : "tech-pill"}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-3">
-                  <Button
-                    asChild
-                    variant="ghost"
-                    className="h-auto px-0 text-xs font-semibold hover:bg-transparent"
-                    style={{ color: "#00D4FF" }}
-                  >
-                    <Link href={p.liveUrl}>Live →</Link>
-                  </Button>
-                  {p.githubUrl && (
-                    <Button
-                      asChild
-                      variant="ghost"
-                      className="h-auto px-0 text-xs font-semibold hover:bg-transparent text-[#64748b] hover:text-white transition-colors"
+                  {/* Title row */}
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-heading text-base font-bold text-white">
+                      {p.title}
+                    </h3>
+                    <Badge
+                      className={`${
+                        p.badgeStyle === "amber" ? "badge-amber" : "badge-blue"
+                      } border-0 text-[10px]`}
                     >
-                      <Link href={p.githubUrl}>GitHub →</Link>
-                    </Button>
-                  )}
+                      {p.badge}
+                    </Badge>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-[#64748b] text-sm leading-relaxed mb-4">
+                    {p.description}
+                  </p>
+
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {p.tags.map((t) => (
+                      <span
+                        key={t}
+                        className={
+                          p.tagStyle === "amber"
+                            ? "tech-pill-amber"
+                            : "tech-pill"
+                        }
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links – only for non‑under‑development projects */}
+                  <div className="flex gap-3">
+                    {p.badge !== "Under Development" &&
+                      p.liveUrl &&
+                      p.liveUrl !== "#" &&
+                      p.liveUrl !== "Under Development" && (
+                        <Button
+                          asChild
+                          variant="ghost"
+                          className="h-auto px-0 text-xs font-semibold hover:bg-transparent"
+                          style={{ color: "#00D4FF" }}
+                        >
+                          <Link href={p.liveUrl}>Live →</Link>
+                        </Button>
+                      )}
+                    {p.badge !== "Under Development" &&
+                      p.githubUrl &&
+                      p.githubUrl !== "#" && (
+                        <Button
+                          asChild
+                          variant="ghost"
+                          className="h-auto px-0 text-xs font-semibold hover:bg-transparent text-[#64748b] hover:text-white transition-colors"
+                        >
+                          <Link href={p.githubUrl}>GitHub →</Link>
+                        </Button>
+                      )}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+
+            // Under‑development cards: no link wrapper, show tooltip overlay
+            if (isUnderDev) {
+              return (
+                <div className="relative group" key={p.title}>
+                  {card}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    Under Development
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              );
+            }
+
+            // Clickable cards: wrap with Next.js Link
+            return (
+              <Link
+                href={p.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={p.title}
+                className="block"
+              >
+                {card}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
