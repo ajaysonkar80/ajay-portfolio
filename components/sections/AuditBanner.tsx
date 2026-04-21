@@ -18,7 +18,7 @@ export default function AuditBanner() {
             <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-2">
               Free Website &amp; Lead Audit — Worth ₹2,000
             </h3>
-            <p className="text-[#64748b] text-sm max-w-lg">
+            <p className="text-white text-sm max-w-lg">
               I&apos;ll review your current website or business and tell you exactly where
               you&apos;re losing leads — no strings attached, no sales pitch.
             </p>

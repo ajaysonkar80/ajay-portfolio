@@ -24,7 +24,7 @@ export function Process() {
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             From Idea to <span className="text-neon">Live Product</span>
           </h2>
-          <p className="text-[#64748b] text-lg max-w-xl">
+          <p className="text-white text-lg max-w-xl">
             A simple 4-step process — no jargon, no confusion.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function Process() {
                   {s.num}
                 </div>
                 <div className="text-white font-semibold text-sm mb-2">{s.title}</div>
-                <div className="text-[#64748b] text-sm leading-relaxed">{s.desc}</div>
+                <div className="text-white text-sm leading-relaxed">{s.desc}</div>
               </CardContent>
             </Card>
           ))}
@@ -74,7 +74,7 @@ export function Metrics() {
                 >
                   {m.val}
                 </div>
-                <div className="text-[#64748b] text-xs">{m.label}</div>
+                <div className="text-white text-xs">{m.label}</div>
               </CardContent>
             </Card>
           ))}
@@ -140,7 +140,7 @@ export function Testimonials() {
                   </div>
                   <div>
                     <div className="text-white text-sm font-semibold">{t.name}</div>
-                    <div className="text-[#64748b] text-xs">{t.company}</div>
+                    <div className="text-white text-xs">{t.company}</div>
                   </div>
                 </div>
               </CardContent>
@@ -210,7 +210,7 @@ export function BlogPreview() {
                 <h3 className="font-heading text-base font-bold text-white leading-snug">
                   {p.title}
                 </h3>
-                <p className="text-[#64748b] text-sm leading-relaxed flex-1">
+                <p className="text-white text-sm leading-relaxed flex-1">
                   {p.excerpt}
                 </p>
                 <Button
@@ -271,7 +271,7 @@ export function FAQ() {
                 </span>
               </button>
               {open === i && (
-                <p className="text-[#64748b] text-sm leading-relaxed pb-5">
+                <p className="text-white text-sm leading-relaxed pb-5">
                   {faq.a}
                 </p>
               )}

@@ -54,7 +54,7 @@ export default function Services() {
             Services Built for{" "}
             <span className="text-amber">Real Results</span>
           </h2>
-          <p className="text-[#64748b] text-lg max-w-xl">
+          <p className="text-white text-lg max-w-xl">
             Not just pretty websites — systems that bring in actual business.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function Services() {
             <div className="text-white font-semibold text-sm mb-1">
               📋 Minimum 6-Month Contract — All Services
             </div>
-            <div className="text-[#64748b] text-sm leading-relaxed">
+            <div className="text-white text-sm leading-relaxed">
               All services require a minimum commitment of 6 months. This ensures
               enough time to deliver measurable results and build systems that
               actually work long-term for your business.
@@ -82,7 +82,7 @@ export default function Services() {
             style={{ background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.2)" }}
           >
             <div className="text-neon font-bold text-lg leading-tight">6 mo</div>
-            <div className="text-[#64748b] text-xs">minimum</div>
+            <div className="text-white text-xs">minimum</div>
           </div>
         </div>
 
@@ -110,7 +110,7 @@ export default function Services() {
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-[#64748b] text-sm leading-relaxed">
+                <p className="text-white text-sm leading-relaxed">
                   {s.description}
                 </p>
 

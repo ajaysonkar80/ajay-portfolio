@@ -18,7 +18,7 @@ export function Footer() {
 
           <div className="font-heading text-base font-bold text-white">
             Ajay <span className="text-neon">Sonkar</span>{" "}
-            <span className="text-[#64748b] text-sm font-normal font-body">
+            <span className="text-white text-sm font-normal font-body">
               — Freelance Developer · Raipur, CG
             </span>
           </div>
@@ -29,7 +29,7 @@ export function Footer() {
                 key={l.label}
                 asChild
                 variant="ghost"
-                className="h-auto px-2 py-1 text-xs text-[#64748b] hover:text-white hover:bg-transparent transition-colors"
+                className="h-auto px-2 py-1 text-xs text-white hover:text-white hover:bg-transparent transition-colors"
               >
                 <Link
                   href={l.href}
@@ -42,7 +42,7 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="text-[#64748b] text-xs">
+          <div className="text-white text-xs">
             © 2026 Ajay Sonkar. All rights reserved.  Built with Next.js · Deployed on Vercel
           </div>
         </div>

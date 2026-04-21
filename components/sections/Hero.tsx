@@ -99,7 +99,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <p
-          className="text-[#64748b] mx-auto mb-10 leading-relaxed"
+          className="text-white mx-auto mb-10 leading-relaxed"
           style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", maxWidth: "520px" }}
         >
           I help local businesses and startups in Raipur get more leads, save hours
@@ -136,7 +136,7 @@ export default function Hero() {
         ----------------------------------------------------------------- */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
           
-          <div className="flex items-center gap-2 text-sm text-[#64748b]">
+          <div className="flex items-center gap-2 text-sm text-white">
             <img 
               src="/map-pin-icon.svg" 
               alt="Location" 
@@ -145,7 +145,7 @@ export default function Hero() {
             <span>Based in Raipur, CG</span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-[#64748b]">
+          <div className="flex items-center gap-2 text-white">
             <img 
               src="/24-hours-color-icon.svg" 
               alt="Clock" 
@@ -154,7 +154,7 @@ export default function Hero() {
             <span>Replies within 24hrs</span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-[#64748b]">
+          <div className="flex items-center gap-2 text-sm text-white">
             <img 
               src="/gold-coin-rupee-icon.svg" 
               alt="Pricing" 
@@ -163,7 +163,7 @@ export default function Hero() {
             <span>Starts at ₹7,000/mo</span>
           </div>
 
-          <div className="flex items-center gap-2 text-sm text-[#64748b]">
+          <div className="flex items-center gap-2 text-sm text-white">
             <img 
               src="/contract.svg" 
               alt="Contract" 

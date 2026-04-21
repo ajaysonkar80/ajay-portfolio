@@ -48,7 +48,7 @@ export default function Projects() {
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Projects That <span className="text-neon">Deliver</span>
           </h2>
-          <p className="text-[#64748b] text-lg max-w-xl">
+          <p className="text-white text-lg max-w-xl">
             Real products built for real businesses — not just demos.
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function Projects() {
               <Card
                 className={`glass-hover border-0 bg-transparent ${
                   p.tagStyle === "amber" ? "glass-amber" : "glass"
-                } ${isUnderDev ? "opacity-50 grayscale cursor-not-allowed" : ""} cursor-pointer`}
+                } ${isUnderDev ? "  cursor-not-allowed" : ""} cursor-pointer`}
               >
                 <CardContent className="p-5">
                   {/* Image placeholder */}
@@ -104,7 +104,7 @@ export default function Projects() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-[#64748b] text-sm leading-relaxed mb-4">
+                  <p className="text-white text-sm leading-relaxed mb-4">
                     {p.description}
                   </p>
 
@@ -133,7 +133,7 @@ export default function Projects() {
                         <Button
                           asChild
                           variant="ghost"
-                          className="h-auto px-0 text-xs font-semibold hover:bg-transparent"
+                          className="h-auto px-2 py-2 text-xl font-semibold hover:bg-transparent"
                           style={{ color: "#00D4FF" }}
                         >
                           <Link href={p.liveUrl}>Live →</Link>
@@ -145,7 +145,7 @@ export default function Projects() {
                         <Button
                           asChild
                           variant="ghost"
-                          className="h-auto px-0 text-xs font-semibold hover:bg-transparent text-[#64748b] hover:text-white transition-colors"
+                          className="h-auto px-2 py-2 text-xl font-semibold hover:bg-transparent hover:text-white transition-colors"
                         >
                           <Link href={p.githubUrl}>GitHub →</Link>
                         </Button>

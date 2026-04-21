@@ -42,14 +42,14 @@ function TrustBadges() {
   return (
     <section className="py-10 px-6">
       <div className="max-w-5xl mx-auto">
-        <p className="text-center text-xs text-[#64748b] uppercase tracking-widest mb-6">
+        <p className="text-center text-xs text-white uppercase tracking-widest mb-6">
           Built with production-grade tools trusted by top startups
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {tools.map((t) => (
             <div
               key={t.name}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-[#64748b]"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-white"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border:     "1px solid rgba(255,255,255,0.08)",
@@ -71,7 +71,7 @@ function TrustBadges() {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background ">
       <Navbar />
       <Hero />
       <Divider />
