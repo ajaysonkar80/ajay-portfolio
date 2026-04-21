@@ -4,10 +4,10 @@ import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   const links = [
-    { label: "WhatsApp", href: "https://wa.me/91XXXXXXXXXX",      external: true  },
+    { label: "WhatsApp", href: "https://wa.me/918319928445",      external: true  },
     { label: "Email",    href: "mailto:hello@ajaysonkar.com",     external: false },
     { label: "GitHub",   href: "https://github.com/ajaysonkar80", external: true  },
-    { label: "LinkedIn", href: "#",                               external: false },
+    { label: "LinkedIn", href: "www.linkedin.com/in/ajay-sonkar-07383921a",                               external: false },
   ];
 
   return (
@@ -43,7 +43,7 @@ export function Footer() {
           </div>
 
           <div className="text-[#64748b] text-xs">
-            © 2025 · Built with Next.js · Deployed on Vercel
+            © 2026 Ajay Sonkar. All rights reserved.  Built with Next.js · Deployed on Vercel
           </div>
         </div>
       </div>
@@ -51,17 +51,23 @@ export function Footer() {
   );
 }
 
+
+
 export function WhatsAppButton() {
   return (
     <Link
-      href="https://wa.me/91XXXXXXXXXX"
+      href="https://wa.me/918319928445"
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-2xl transition-transform duration-200 hover:scale-110 active:scale-95 no-underline"
+      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95 no-underline"
       style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}
     >
-      💬
+      <img 
+        src="/whatsapp.svg" 
+        alt="WhatsApp" 
+        className="w-7 h-7" 
+      />
     </Link>
   );
 }

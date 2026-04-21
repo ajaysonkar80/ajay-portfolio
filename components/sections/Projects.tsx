@@ -31,10 +31,10 @@ const projects = [
     description: "Flavoured Lassi Startup",
     tags: ["Next.js", "Framer Motion", "Vercel"],
     tagStyle: "blue",
-    badge: "Under Development",
+    badge: "B2C · Branding",
     badgeStyle: "blue",
-    liveUrl: "Under Development",
-    githubUrl: "#",
+    liveUrl: "https://surya-lassi.vercel.app",
+    githubUrl: "https://github.com/ajaysonkar80/surya-lassi",
   },
 ];
 

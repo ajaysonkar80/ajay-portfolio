@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const services = [
   {
-    icon:        "🌐",
+    icon:        "/web-development.svg", // Replaced emoji with SVG path
     title:       "Web Development",
     description: "Fast, mobile-first websites and web apps for local businesses, brands, and startups. Built to rank on Google and convert visitors into paying clients.",
     features:    ["Custom design & development", "Mobile-first & SEO optimised", "Lead capture integration", "Monthly maintenance included"],
@@ -14,7 +14,7 @@ const services = [
     href:        "#contact",
   },
   {
-    icon:        "🤖",
+    icon:        "/automation.svg", // Replaced emoji with SVG path
     title:       "AI Automations",
     description: "Automate repetitive tasks — WhatsApp follow-ups, lead notifications, data entry, and customer workflows using modern AI tools tailored to your business.",
     features:    ["WhatsApp & email automation", "Lead follow-up sequences", "AI-powered data workflows", "Monthly performance review"],
@@ -23,7 +23,7 @@ const services = [
     href:        "#contact",
   },
   {
-    icon:        "📈",
+    icon:        "/funnel.svg", // Replaced emoji with SVG path
     title:       "Lead Acquisition",
     description: "Full-funnel lead capture systems — landing pages, contact forms, CRM integrations, and email sequences that fill your pipeline with real clients every month.",
     features:    ["High-converting landing pages", "CRM & form integration", "Email follow-up sequences", "Monthly lead report"],
@@ -32,11 +32,11 @@ const services = [
     href:        "#contact",
   },
   {
-    icon:        "💡",
+    icon:        "/invention.svg", // Replaced emoji with SVG path
     title:       "Tech Consultation",
     description: "Not sure what tech you need? Book a 1-on-1 consultation. I'll map out the right solution for your goals and budget — no jargon, no unnecessary upselling.",
     features:    ["1-on-1 strategy sessions", "Tech stack recommendations", "Roadmap & budget planning", "Ongoing advisory support"],
-    cta:         "From ₹7,000/mo",
+    cta:         "Free Consultation",
     color:       "amber",
     href:        "#contact",
   },
@@ -86,48 +86,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Volume discount banner */}
-        <div
-          className="rounded-xl p-5 mb-12 flex flex-col sm:flex-row items-start sm:items-center gap-5"
-          style={{
-            background: "rgba(245,158,11,0.05)",
-            border:     "1px solid rgba(245,158,11,0.2)",
-          }}
-        >
-          <div className="flex-1">
-            <div className="text-amber font-semibold text-sm mb-1">
-              🎁 Volume Discounts — Longer Contracts
-            </div>
-            <div className="text-[#64748b] text-sm">
-              Commit longer and save more. Discounts applied automatically.
-            </div>
-          </div>
-          <div className="flex gap-3 flex-wrap">
-            {[
-              { period: "6 months",  discount: "Standard" },
-              { period: "9 months",  discount: "5% off"   },
-              { period: "12 months", discount: "10% off"  },
-            ].map((d) => (
-              <div
-                key={d.period}
-                className="rounded-lg px-4 py-3 text-center"
-                style={{
-                  background: d.discount === "Standard" ? "rgba(255,255,255,0.03)" : "rgba(245,158,11,0.1)",
-                  border:     d.discount === "Standard" ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(245,158,11,0.25)",
-                }}
-              >
-                <div
-                  className="font-bold text-sm leading-tight"
-                  style={{ color: d.discount === "Standard" ? "#e8eaf0" : "#F59E0B" }}
-                >
-                  {d.discount}
-                </div>
-                <div className="text-[#64748b] text-xs mt-0.5">{d.period}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
+        
         {/* Service cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((s) => (
@@ -144,7 +103,8 @@ export default function Services() {
                       : "rgba(245,158,11,0.12)",
                   }}
                 >
-                  {s.icon}
+                  {/* Updated to use img tag for SVG */}
+                  <img src={s.icon} alt={s.title} className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-white">{s.title}</h3>
               </CardHeader>

@@ -28,19 +28,17 @@ function Divider() {
     </div>
   );
 }
-
 function TrustBadges() {
   const tools = [
-    "⚡ Next.js 15",
-    "🔷 TypeScript",
-    "🤖 OpenAI API",
-    "🗄️ Neon PostgreSQL",
-    "🚀 Vercel",
-    "📧 Zepto Mail",
-    "🔴 Upstash Redis",
-    "🎨 Tailwind CSS",
+    { name: "Next.js 15", src: "/nextjs-icon.webp" },
+    { name: "TypeScript", src: "/typescript.svg" },
+    { name: "Gemini", src: "/google-gemini-icon.svg" },
+    { name: "Neon PostgreSQL", src: "/neon.svg" },
+    { name: "Vercel", src: "/vercel.svg" },
+    { name: "Zepto Mail", src: "/email.svg" },
+    { name: "Upstash Redis", src: "/redis-icon.svg" },
+    { name: "Tailwind CSS", src: "/tailwind-css-icon.svg" },
   ];
-
   return (
     <section className="py-10 px-6">
       <div className="max-w-5xl mx-auto">
@@ -50,14 +48,19 @@ function TrustBadges() {
         <div className="flex flex-wrap justify-center gap-3">
           {tools.map((t) => (
             <div
-              key={t}
+              key={t.name}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-[#64748b]"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border:     "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              {t}
+              <img 
+                src={t.src} 
+                alt={t.name} 
+                className="w-4 h-4 shrink-0" 
+              />
+              <span>{t.name}</span>
             </div>
           ))}
         </div>
@@ -79,8 +82,7 @@ export default function HomePage() {
       <Services />
       <Divider />
       <Process />
-      <Divider />
-      <Pricing />
+    
       <Divider />
       <Projects />
       <Divider />
