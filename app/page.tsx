@@ -77,6 +77,7 @@ export default function HomePage() {
       <Divider />
       <TrustBadges />
       <Divider />
+      {/*<Divider/>*/}
       <AuditBanner />
       <Divider />
       <Services />
