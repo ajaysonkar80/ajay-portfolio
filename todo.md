@@ -44,10 +44,10 @@
 
 ## 📄 Content Pages (High Priority)
 
-- [ ] **About page** (`/about`)
+- [x] **About page** (`/about`)
 - [ ] **Projects/Cases page** (`/work`)
-- [ ] **Privacy policy** (`/privacy`)
-- [ ] **Terms of service** (`/terms`)
+- [x] **Privacy policy** (`/privacy`)
+- [x] **Terms of service** (`/terms`)
 - [ ] **Services detail pages** (`/services/*`)
 
 ---

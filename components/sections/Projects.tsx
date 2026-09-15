@@ -167,12 +167,10 @@ export default function Projects() {
               );
             }
 
-            // Clickable cards: wrap with Next.js Link
+            // Clickable cards: link to work detail page
             return (
               <Link
-                href={p.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/work/${p.title.toLowerCase().replace(/\s+/g, "-")}`}
                 key={p.title}
                 className="block"
               >
