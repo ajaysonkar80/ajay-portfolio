@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function Footer() {
   const links = [
+    { label: "Privacy Policy", href: "/privacy", external: false },
     { label: "WhatsApp", href: "https://wa.me/918319928445",      external: true  },
     { label: "Email",    href: "mailto:hello@ajaysonkar.com",     external: false },
     { label: "GitHub",   href: "https://github.com/ajaysonkar80", external: true  },

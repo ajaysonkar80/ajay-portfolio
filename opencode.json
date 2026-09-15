@@ -33,6 +33,10 @@
         "@playwright/mcp@latest"
       ],
       "enabled": false
+    },
+
+    "iconserve": {
+      "enabled": false
     }
   }
 }
