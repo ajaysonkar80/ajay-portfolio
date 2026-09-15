@@ -45,10 +45,10 @@
 ## 📄 Content Pages (High Priority)
 
 - [x] **About page** (`/about`)
-- [ ] **Projects/Cases page** (`/work`)
+- [x] **Projects/Cases page** (`/work`)
 - [x] **Privacy policy** (`/privacy`)
 - [x] **Terms of service** (`/terms`)
-- [ ] **Services detail pages** (`/services/*`)
+- [x] **Services detail pages** (`/services/*`)
 
 ---
 

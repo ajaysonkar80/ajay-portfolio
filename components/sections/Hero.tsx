@@ -80,21 +80,9 @@ export default function Hero() {
           className="font-heading font-black text-white mb-6"
           style={{ fontSize: "clamp(2.2rem, 6vw, 4.2rem)", lineHeight: 1.1 }}
         >
-          Your Local Tech Partner for{" "}
-          <motion.span
-            className="text-neon"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 8 }}
-            transition={{ duration: 0.3 }}
-            style={{
-              display: "inline-block",
-              textShadow: "0 0 32px rgba(0,212,255,0.5)",
-            }}
-          >
-            {rotatingWords[wordIndex]}
-          </motion.span>{" "}
+          Your customers are searching for you.{" "}
           <br />
-          <span className="text-amber">&amp; AI-Powered Growth</span>
+          Can they find you?
         </h1>
 
         {/* Subheading */}
@@ -102,9 +90,8 @@ export default function Hero() {
           className="text-white mx-auto mb-10 leading-relaxed"
           style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", maxWidth: "520px" }}
         >
-          I help local businesses and startups in Raipur get more leads, save hours
-          with automation, and build web products that actually convert — with clear
-          monthly pricing and zero surprises.
+          I help local businesses in Raipur get more customers, save time on repetitive work,
+          and stop losing leads. No technical jargon. Clear monthly pricing.
         </p>
 
         {/* CTAs */}
@@ -114,7 +101,7 @@ export default function Hero() {
             className="btn-neon h-auto px-8 py-4 text-base"
             style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
           >
-            <Link href="#contact">Get a Free Consultation</Link>
+            <Link href="#contact">Request a Free Quote</Link>
           </Button>
 
           <Button
@@ -127,7 +114,7 @@ export default function Hero() {
               border: "1px solid rgba(0,212,255,0.4)",
             }}
           >
-            <Link href="#projects">See My Work</Link>
+            <Link href="/services">See How I Fix Problems →</Link>
           </Button>
         </div>
 
