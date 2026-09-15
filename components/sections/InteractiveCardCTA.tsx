@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 type Option = {
   id: string;
@@ -17,19 +18,25 @@ const options: Option[] = [
     id: "calls",
     title: "I need more calls and inquiries from local customers.",
     description: "Your competitors are ranking higher. I help you show up first.",
-    icon: "📞",
+    icon: "tabler:phone-call",
   },
   {
     id: "security",
     title: "I need a reliable developer to keep my site secure and updated.",
     description: "No more wondering if your website will break or get hacked.",
-    icon: "🔒",
+    icon: "ph:shield-check",
   },
   {
     id: "automation",
     title: "I want to automate repetitive tasks and grow revenue.",
     description: "Stop wasting time on data entry and manual follow-ups.",
-    icon: "⚙️",
+    icon: "tabler:settings",
+  },
+  {
+    id: "internal",
+    title: "I need better internal tools and custom software.",
+    description: "Streamline your operations with custom-built tools and dashboards.",
+    icon: "tabler:database",
   },
 ];
 
@@ -63,7 +70,9 @@ export default function InteractiveCardCTA() {
               onClick={() => setSelected(option.id)}
             >
               <div className="flex items-start gap-4">
-                <span className="text-2xl shrink-0">{option.icon}</span>
+                <span className="text-2xl shrink-0 text-neon">
+                  <Icon icon={option.icon} width={28} height={28} />
+                </span>
                 <div>
                   <div className="text-white font-semibold text-base mb-1">
                     {option.title}
