@@ -1,4 +1,6 @@
 import Navbar      from "@/components/Navbar";
+import HeroSection from "@/components/sections/StarHero";
+import StarHoverHeroSection from "@/components/sections/StarHoverHero";
 import Hero        from "@/components/sections/Hero";
 import Services    from "@/components/sections/Services";
 import Pricing     from "@/components/sections/Pricing";
@@ -73,6 +75,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-background ">
       <Navbar />
+      <StarHoverHeroSection/>
+      <HeroSection/>
       <Hero />
       <Divider />
       <TrustBadges />

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "marm-memory": {
+      "command": "marm-mcp-stdio",
+      "args": []
+    }
+  }
+}

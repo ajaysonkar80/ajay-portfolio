@@ -10,7 +10,20 @@
   "permission": {
     "skill": {
       "*": "deny",
-      "senior-frontend": "allow"
+      "superdesign": "allow"
+    }
+  },
+
+  "agent": {
+    "designer": {
+      "description": "Designs and improves frontend UI using the SuperDesign skill and the project's existing design system.",
+      "mode": "subagent",
+      "permission": {
+        "skill": {
+          "superdesign": "allow"
+        },
+        "edit": "deny"
+      }
     }
   },
 
@@ -37,6 +50,28 @@
 
     "iconserve": {
       "enabled": false
+    },
+
+    "graphiti": {
+      "type": "remote",
+      "url": "http://localhost:8000/mcp/",
+      "enabled": true
+    },
+
+    "exa": {
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp",
+      "enabled": false
+    },
+
+    "marm-memory": {
+      "type": "local",
+      "command": [
+        "marm-mcp-stdio"
+      ],
+      "enabled": true
     }
   }
 }
+
+//marm-mcp-stdio do not remove this comment as it's useful
