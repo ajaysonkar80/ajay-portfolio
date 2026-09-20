@@ -165,6 +165,13 @@
 
 /* ─── Custom Components & Utilities ──────────────────────────────────────────── */
 @layer components {
+  /* Brand colors */
+  .text-brand-cyan { color: #06b6d4; }
+  .text-brand-teal { color: #14b8a6; }
+  .text-brand-purple { color: #a855f7; }
+  .text-brand-rose { color: #f43f5e; }
+  .text-brand-emerald { color: #10b981; }
+  
   .text-neon { color: #00D4FF; }
   .text-amber { color: #F59E0B; }
   .text-muted-foreground { color: #64748b; }
@@ -415,7 +422,111 @@
     50% { box-shadow: 0 0 24px rgba(0,212,255,0.8); }
   }
 
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+  }
+
+  @keyframes flow-dash {
+    0% { strokeDashoffset: 40; }
+    100% { strokeDashoffset: 0; }
+  }
+
+  @keyframes laser-pulse {
+    0% { strokeDashoffset: 180; opacity: 0.2; }
+    40% { opacity: 1; }
+    100% { strokeDashoffset: 0; opacity: 0.2; }
+  }
+
+  @keyframes radar-sweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes shimmer-wave {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(180%); }
+  }
+
+  @keyframes code-typing {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
   .animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
   .animate-fade-in { animation: fade-in 0.4s ease-out forwards; }
   .animate-neon-pulse { animation: neon-pulse 2.5s ease-in-out infinite; }
+  .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+  .animate-flow-dash { animation: flow-dash 1.2s linear infinite; }
+  .animate-laser-pulse { animation: laser-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+  .animate-radar-sweep { animation: radar-sweep 5s linear infinite; }
+  .animate-shimmer-wave { animation: shimmer-wave 2s linear infinite; }
+  .animate-code-typing { animation: code-typing 0.12s ease-out forwards; }
+
+  /* Tech grid background */
+  .tech-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: 26px 26px;
+  }
+
+  /* Dark luxury glassmorphism for service cards */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.82) 0%, rgba(10, 14, 26, 0.9) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(6, 182, 212, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    opacity: 0.6;
+    transition: all 0.4s ease;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+    left: 4%;
+    right: 4%;
+  }
+
+  /* n8n Node Styles */
+  .n8n-node {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    transition: all 0.25s ease;
+  }
+  .n8n-node.node-active {
+    border-color: #a855f7;
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+    transform: scale(1.03);
+  }
+  .n8n-node.node-success {
+    border-color: #10b981;
+    box-shadow: 0 0 22px rgba(16, 185, 129, 0.35);
+  }
+
+  /* Wire glow effect */
+  .wire-glow {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: #06b6d4;
+    color: white;
+  }
 }

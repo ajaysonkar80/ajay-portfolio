@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Dynamics // Engineered Software & Workflow Services</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              teal: '#14b8a6',
+              purple: '#a855f7',
+              n8n: '#ea4b71',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              rose: '#f43f5e',
+              slate950: '#07090e',
+            }
+          },
+          keyframes: {
+            pulseSlow: {
+              '0%, 100%': { opacity: 0.8, transform: 'scale(1)' },
+              '50%': { opacity: 1, transform: 'scale(1.03)' },
+            },
+            flowDash: {
+              '0%': { strokeDashoffset: '40' },
+              '100%': { strokeDashoffset: '0' },
+            },
+            laserPulse: {
+              '0%': { strokeDashoffset: '180', opacity: '0.2' },
+              '40%': { opacity: '1' },
+              '100%': { strokeDashoffset: '0', opacity: '0.2' },
+            },
+            radarSweep: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            shimmerWave: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(180%)' },
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+            'flow-dash': 'flowDash 1.2s linear infinite',
+            'laser-pulse': 'laserPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+            'radar-sweep': 'radarSweep 5s linear infinite',
+            'shimmer-wave': 'shimmerWave 2s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #06080e;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      selection-background-color: #06b6d4;
+    }
+
+    /* Ambient engineering dot-grid pattern */
+    .tech-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+    }
+
+    /* Dark luxury glassmorphism */
+    .glass-card {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.82) 0%, rgba(10, 14, 26, 0.9) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(6, 182, 212, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+      opacity: 0.6;
+      transition: all 0.4s ease;
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+      left: 4%;
+      right: 4%;
+    }
+
+    /* n8n Node Styles */
+    .n8n-node {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease;
+    }
+    .n8n-node.node-active {
+      border-color: #a855f7;
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+      transform: scale(1.03);
+    }
+    .n8n-node.node-success {
+      border-color: #10b981;
+      box-shadow: 0 0 22px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Bezier energy connectors */
+    .wire-glow {
+      filter: drop-shadow(0 0 5px currentColor);
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090e17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative antialiased selection:bg-cyan-500 selection:text-white">
+
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute top-10 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/3 right-10 w-[550px] h-[550px] bg-purple-600/10 rounded-full blur-[130px]"></div>
+    <div class="absolute bottom-10 left-1/3 w-[600px] h-[600px] bg-emerald-600/8 rounded-full blur-[140px]"></div>
+    <div class="absolute inset-0 tech-grid opacity-35"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+    
+    <!-- Header Controls & Branding -->
+    <header class="flex items-center justify-between border-b border-slate-800/80 pb-6 mb-16">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-teal-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <i data-lucide="cpu" class="w-5 h-5 text-slate-950 stroke-[2.5]"></i>
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+            SYNAPSE <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700">LIVE RENDER ENGINE</span>
+          </span>
+          <span class="text-[11px] text-slate-400 block font-mono">Continuous Execution Matrix</span>
+        </div>
+      </div>
+
+      <!-- Tactile audio toggle & status -->
+      <div class="flex items-center gap-3.5">
+        <button id="soundToggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 hover:border-slate-700 text-xs font-mono text-slate-300 transition-all shadow-sm">
+          <i id="soundIcon" data-lucide="volume-x" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span id="soundText">AUDIO: OFF</span>
+        </button>
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-800/50 text-cyan-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span>DOM REACTIVE • NO VIDEO MP4</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Headline Section -->
+    <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-400 text-xs font-medium tracking-wide uppercase">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        Dynamic Micro-Simulations • Real-Time Architecture
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+        Full-Spectrum Engineering. <br/>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400">
+          From Code to Autonomous Scale.
+        </span>
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+        Interact with the live workflows below. Watch code compile directly into a dynamic browser viewport and trigger n8n autonomous pipelines with step-by-step telemetry.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+
+      <!-- ========================================================= -->
+      <!-- SERVICE 1: WEB DEV (Animated Code Typist -> Compile -> Website) -->
+      <!-- ========================================================= -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group">
+        <div>
+          <!-- Title & tags -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">Service 01 // Frontend & Core Web</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Full-Stack Web Development</h3>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-cyan-950/70 text-cyan-300 border border-cyan-800/60">Vite HMR</span>
+          </div>
+
+          <p class="text-sm text-slate-400 mb-5">
+            Real-time automated typing triggers dynamic compilation and instantly renders an interactive micro-application inside a live simulated viewport.
+          </p>
+
+          <!-- Interactive Workspace Mockup -->
+          <div class="w-full bg-[#090d16] border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <!-- IDE / Viewport Header -->
+            <div class="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800 text-xs font-mono text-slate-400">
+              <div class="flex items-center gap-2">
+                <div class="flex gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+                </div>
+                <span class="ml-2 text-slate-300 flex items-center gap-1">
+                  <i data-lucide="file-code" class="w-3.5 h-3.5 text-cyan-400"></i> HeroSection.tsx
+                </span>
+              </div>
+              
+              <!-- Responsive toggle and compile trigger -->
+              <div class="flex items-center gap-2">
+                <div class="hidden sm:flex bg-slate-950 border border-slate-800 rounded p-0.5 text-[10px]">
+                  <button id="viewDeskBtn" onclick="setPreviewMode('desktop')" class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300">Desktop</button>
+                  <button id="viewMobBtn" onclick="setPreviewMode('mobile')" class="px-2 py-0.5 rounded text-slate-400 hover:text-white">Mobile</button>
+                </div>
+                <button onclick="restartCodeSimulation()" class="px-2 py-1 text-[11px] rounded bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 transition-colors flex items-center gap-1.5 font-mono">
+                  <i data-lucide="play" class="w-3 h-3"></i> Re-compile
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 p-3 gap-3 min-h-[290px] text-xs font-mono relative">
+              
+              <!-- Left: Animated Code Typing Terminal -->
+              <div class="bg-black/60 p-3 rounded-lg border border-slate-800/90 flex flex-col justify-between overflow-hidden relative font-mono text-[11px] leading-relaxed">
+                <div>
+                  <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-slate-500 text-[10px]">
+                    <span>REACT 19 + TAILWIND 4.0</span>
+                    <span id="compilerStatusText" class="text-cyan-400 font-bold">READY</span>
+                  </div>
+
+                  <!-- Code container where typing appears character by character -->
+                  <div id="codeEditorArea" class="space-y-0.5 text-slate-300 select-none min-h-[170px]">
+                    <!-- Injected by script -->
+                  </div>
+                </div>
+
+                <!-- Compilation progress bar -->
+                <div class="pt-2">
+                  <div class="flex justify-between text-[10px] text-slate-400 mb-1">
+                    <span id="buildLog">Idle</span>
+                    <span id="buildPercent">100%</span>
+                  </div>
+                  <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                    <div id="compileProgressBar" class="w-full h-full bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full transition-all duration-150"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Live Rendered Miniature Website Window -->
+              <div id="browserContainer" class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex flex-col justify-between relative overflow-hidden transition-all duration-300">
+                <!-- Mini browser frame bar -->
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-800/80 text-[10px] text-slate-400">
+                  <i data-lucide="globe" class="w-3 h-3 text-cyan-400"></i>
+                  <div class="w-full bg-slate-900 border border-slate-800 rounded px-2 py-0.5 text-slate-400 font-mono truncate text-[9px] flex items-center justify-between">
+                    <span>https://preview.app/v3/render</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  </div>
+                </div>
+
+                <!-- Web Page Render Box -->
+                <div id="renderedWebpage" class="relative flex-1 py-3 px-2 flex flex-col justify-between bg-gradient-to-b from-slate-900/90 to-[#0b0f19] rounded-md border border-slate-800/60 my-1 overflow-hidden transition-opacity duration-300">
+                  
+                  <!-- Flash overlay for compilation finish -->
+                  <div id="compileFlash" class="absolute inset-0 bg-cyan-400/20 pointer-events-none opacity-0 transition-opacity duration-300 z-20"></div>
+
+                  <!-- Mini Website Content -->
+                  <div class="space-y-2.5">
+                    <!-- Nav -->
+                    <div class="flex items-center justify-between pb-1 border-b border-slate-800/60">
+                      <div class="flex items-center gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded bg-cyan-400"></div>
+                        <span class="font-bold text-[11px] text-white tracking-tight">KUBEX</span>
+                      </div>
+                      <div class="flex gap-1.5">
+                        <span class="w-5 h-1 rounded bg-slate-700"></span>
+                        <span class="w-5 h-1 rounded bg-slate-700"></span>
+                      </div>
+                    </div>
+
+                    <!-- Hero Banner -->
+                    <div class="text-center py-2 px-1">
+                      <div class="inline-block px-1.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[8px] font-mono mb-1">
+                        Ultra-Fast Delivery
+                      </div>
+                      <h4 id="livePreviewTitle" class="text-sm font-extrabold text-white tracking-tight leading-tight">
+                        Next-Gen Cloud Runtime
+                      </h4>
+                      <p class="text-[9px] text-slate-400 max-w-[170px] mx-auto mt-1 leading-snug">
+                        Zero cold starts. Autonomous distributed clusters across 300+ edge locations.
+                      </p>
+                    </div>
+
+                    <!-- Interactive CTA Button inside mini site -->
+                    <div class="flex justify-center gap-2">
+                      <button id="miniSiteBtn" onclick="toggleMiniSiteAction()" class="px-3 py-1 rounded bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-bold text-[10px] shadow-md shadow-cyan-500/20 hover:scale-105 active:scale-95 transition-all">
+                        Deploy Stack
+                      </button>
+                      <button class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
+                        Docs
+                      </button>
+                    </div>
+
+                    <!-- Live KPI Cards -->
+                    <div class="grid grid-cols-2 gap-1.5 pt-1">
+                      <div class="bg-black/40 border border-slate-800/80 p-1.5 rounded text-center">
+                        <span class="text-[8px] text-slate-500 block">LIGHTHOUSE</span>
+                        <span class="text-xs font-bold font-mono text-emerald-400">100 / 100</span>
+                      </div>
+                      <div class="bg-black/40 border border-slate-800/80 p-1.5 rounded text-center">
+                        <span class="text-[8px] text-slate-500 block">GLOBAL TTFB</span>
+                        <span id="miniTtfbCounter" class="text-xs font-bold font-mono text-cyan-400">22 ms</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Footer bar -->
+                  <div class="pt-1 border-t border-slate-800/60 flex items-center justify-between text-[8px] font-mono text-slate-500">
+                    <span>Edge: iad1-us</span>
+                    <span class="text-emerald-400">Ready</span>
+                  </div>
+                </div>
+
+                <div class="text-[9px] font-mono text-slate-400 flex items-center justify-between pt-1">
+                  <span>Interactive DOM preview</span>
+                  <span class="text-cyan-400">Hot Module Reload: 12ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">React 19</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Next.js App Router</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Tailwind CSS</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Edge SSR</span>
+          </div>
+          <button onclick="openDrawer('webdev')" class="inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-0.5">
+            View Stack <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SERVICE 2: AI AUTOMATION (n8n Workflow Canvas & Bezier Pulses) -->
+      <!-- ========================================================= -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group">
+        <div>
+          <!-- Title & tags -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                <i data-lucide="git-merge" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold">Service 02 // Autonomous Workflows</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">AI & n8n Workflow Automation</h3>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-purple-950/70 text-purple-300 border border-purple-800/60">n8n Node Grid</span>
+          </div>
+
+          <p class="text-sm text-slate-400 mb-5">
+            Visual node orchestration with live webhook dispatching, multi-agent LLM reasoning, vector embeddings, and real-time execution telemetry.
+          </p>
+
+          <div class="w-full bg-[#080b13] border border-slate-800 rounded-xl overflow-hidden shadow-2xl relative">
+            <!-- Canvas Header & Run trigger button -->
+            <div class="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800 text-xs font-mono text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                <span class="text-slate-200 font-bold">n8n // Agentic Pipeline Canvas</span>
+              </div>
+              
+              <div class="flex items-center gap-2">
+                <button id="runWorkflowBtn" onclick="executeN8nWorkflow()" class="px-2.5 py-1 text-[11px] rounded bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 transition-all flex items-center gap-1.5 font-mono shadow-sm">
+                  <i data-lucide="play-circle" class="w-3.5 h-3.5 text-purple-400"></i>
+                  <span>Test Workflow</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- n8n Node Canvas Area with SVG Beziers -->
+            <div id="n8nCanvasContainer" class="relative min-h-[290px] p-4 flex flex-col justify-between overflow-hidden bg-[#070a11] tech-grid">
+              
+              <!-- SVG Connecting Beziers Layer -->
+              <svg id="n8nSvgWires" class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="wireGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f43f5e" />
+                    <stop offset="100%" stop-color="#a855f7" />
+                  </linearGradient>
+                  <linearGradient id="wireGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="100%" stop-color="#06b6d4" />
+                  </linearGradient>
+                  <linearGradient id="wireGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#06b6d4" />
+                    <stop offset="100%" stop-color="#10b981" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Base static dimmed wires -->
+                <path id="wirePath1" d="M 125,55 C 190,55 190,135 240,135" fill="none" stroke="#334155" stroke-width="2.5" stroke-dasharray="4,4" />
+                <path id="wirePath2" d="M 360,135 C 410,135 410,55 460,55" fill="none" stroke="#334155" stroke-width="2.5" stroke-dasharray="4,4" />
+                <path id="wirePath3" d="M 360,135 C 410,135 410,210 460,210" fill="none" stroke="#334155" stroke-width="2.5" stroke-dasharray="4,4" />
+
+                <!-- Active glowing laser pulses that flow along the bezier paths during execution -->
+                <path id="pulseWire1" d="M 125,55 C 190,55 190,135 240,135" fill="none" stroke="url(#wireGrad1)" stroke-width="3" stroke-linecap="round" class="opacity-30" />
+                <path id="pulseWire2" d="M 360,135 C 410,135 410,55 460,55" fill="none" stroke="url(#wireGrad2)" stroke-width="3" stroke-linecap="round" class="opacity-30" />
+                <path id="pulseWire3" d="M 360,135 C 410,135 410,210 460,210" fill="none" stroke="url(#wireGrad3)" stroke-width="3" stroke-linecap="round" class="opacity-30" />
+
+                <!-- Moving light packets (SVG circles) -->
+                <circle id="movingPacket1" r="4.5" fill="#f43f5e" class="opacity-0 filter drop-shadow(0 0 6px #f43f5e)" />
+                <circle id="movingPacket2" r="4.5" fill="#a855f7" class="opacity-0 filter drop-shadow(0 0 6px #a855f7)" />
+                <circle id="movingPacket3" r="4.5" fill="#10b981" class="opacity-0 filter drop-shadow(0 0 6px #10b981)" />
+              </svg>
+
+              <!-- Node Layout in 3 Vertical Columns -->
+              <div class="relative z-10 grid grid-cols-3 gap-3 h-full items-center">
+                
+                <!-- NODE 1: Webhook Trigger (Left) -->
+                <div class="flex flex-col items-start justify-center space-y-2">
+                  <div id="nodeWebhook" class="n8n-node w-full rounded-xl p-3 border cursor-pointer hover:border-rose-500/60" onclick="showNodePayload('webhook')">
+                    <div class="flex items-center justify-between mb-1.5">
+                      <div class="flex items-center gap-1.5">
+                        <div class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center">
+                          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-white tracking-tight">Webhook</span>
+                      </div>
+                      <span id="badgeWebhook" class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-950/70 border border-rose-800/60 text-rose-300">
+                        LISTENING
+                      </span>
+                    </div>
+                    <div class="text-[10px] text-slate-400 font-mono">POST /v1/incoming</div>
+                    <div class="mt-1 flex items-center justify-between text-[9px] text-slate-500 font-mono">
+                      <span>Source: Stripe/Typeform</span>
+                      <span class="text-rose-400">● Trigger</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- NODE 2: OpenAI LLM Agent (Center) -->
+                <div class="flex flex-col items-center justify-center">
+                  <div id="nodeLlm" class="n8n-node w-full rounded-xl p-3 border cursor-pointer hover:border-purple-500/60" onclick="showNodePayload('llm')">
+                    <div class="flex items-center justify-between mb-1.5">
+                      <div class="flex items-center gap-1.5">
+                        <div class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                          <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-white tracking-tight">LLM Agent</span>
+                      </div>
+                      <span id="badgeLlm" class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">
+                        IDLE
+                      </span>
+                    </div>
+                    <div class="text-[10px] text-slate-400 font-mono">gpt-4o-mini / reasoning</div>
+                    <div class="mt-1 flex items-center justify-between text-[9px] text-slate-500 font-mono">
+                      <span>Temp: 0.2 • Schema Val</span>
+                      <span class="text-purple-400">● Router</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- NODE 3 & 4: Actions / CRM & Slack (Right Stack) -->
+                <div class="flex flex-col justify-center space-y-3">
+                  <!-- Node 3A: Vector Embed / Pinecone -->
+                  <div id="nodePinecone" class="n8n-node w-full rounded-xl p-2.5 border cursor-pointer hover:border-cyan-500/60" onclick="showNodePayload('vector')">
+                    <div class="flex items-center justify-between mb-1">
+                      <div class="flex items-center gap-1.5">
+                        <div class="w-5 h-5 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                          <i data-lucide="database" class="w-3 h-3"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">Pinecone RAG</span>
+                      </div>
+                      <span id="badgePinecone" class="text-[8px] font-mono px-1 py-0.5 rounded bg-slate-800 text-slate-400">
+                        IDLE
+                      </span>
+                    </div>
+                    <div class="text-[9px] text-slate-400 font-mono">Cosine Vector Match</div>
+                  </div>
+
+                  <!-- Node 3B: CRM / Slack Dispatch -->
+                  <div id="nodeSlack" class="n8n-node w-full rounded-xl p-2.5 border cursor-pointer hover:border-emerald-500/60" onclick="showNodePayload('slack')">
+                    <div class="flex items-center justify-between mb-1">
+                      <div class="flex items-center gap-1.5">
+                        <div class="w-5 h-5 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                          <i data-lucide="send" class="w-3 h-3"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-white">Slack & HubSpot</span>
+                      </div>
+                      <span id="badgeSlack" class="text-[8px] font-mono px-1 py-0.5 rounded bg-slate-800 text-slate-400">
+                        IDLE
+                      </span>
+                    </div>
+                    <div class="text-[9px] text-slate-400 font-mono">200 OK • Auto-Synced</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Real-time Payload & Telemetry Bar -->
+              <div class="relative z-10 mt-2 bg-slate-950/80 border border-slate-800 rounded-lg p-2 text-slate-400 text-[10px] font-mono flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping"></span>
+                  <span id="n8nTelemetryStatus">Status: Ready. Click "Test Workflow" to simulate payload</span>
+                </div>
+                <span id="n8nExecTime" class="text-purple-400 font-bold">0 ms</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">n8n Custom Nodes</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">LangChain</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Pinecone / RAG</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Self-Healing</span>
+          </div>
+          <button onclick="openDrawer('aiauto')" class="inline-flex items-center gap-1 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors group-hover:translate-x-0.5">
+            View Stack <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SERVICE 3: INTERNAL TOOLS (Live Data Grid & CRUD Approval) -->
+      <!-- ========================================================= -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group">
+        <div>
+          <!-- Title & tags -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">Service 03 // Operations & RBAC</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Internal Operations Tools</h3>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-amber-950/70 text-amber-300 border border-amber-800/60">Audit-Ready</span>
+          </div>
+
+          <p class="text-sm text-slate-400 mb-5">
+            Mission-critical administrative dashboards, real-time database mutations, optimistic UI approvals, and instantaneous telemetry.
+          </p>
+
+          <!-- Interactive Dashboard Mockup -->
+          <div class="w-full bg-[#080b13] border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <!-- Console Header -->
+            <div class="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800 text-xs font-mono text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="text-slate-200 font-bold">AdminConsole // Production</span>
+                <span class="px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 text-[10px]">DB CONNECTED</span>
+              </div>
+              
+              <div class="flex items-center gap-2">
+                <button onclick="seedNewTransaction()" class="px-2 py-1 text-[11px] rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition-colors flex items-center gap-1 font-mono">
+                  <i data-lucide="plus" class="w-3 h-3"></i> Add Row
+                </button>
+              </div>
+            </div>
+
+            <!-- Console Interior with Metrics & Live CRUD Records -->
+            <div class="p-3.5 space-y-3 min-h-[290px] flex flex-col justify-between">
+              <!-- KPI Counters -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="bg-black/50 border border-slate-800/90 p-2 rounded-lg">
+                  <span class="text-[9px] font-mono text-slate-500 block">PENDING APPROVAL</span>
+                  <span id="pendingApprovalCount" class="text-sm font-mono font-bold text-amber-400">3 Records</span>
+                </div>
+                <div class="bg-black/50 border border-slate-800/90 p-2 rounded-lg">
+                  <span class="text-[9px] font-mono text-slate-500 block">THROUGHPUT</span>
+                  <span id="telemetryThroughput" class="text-sm font-mono font-bold text-teal-400">12,420 /m</span>
+                </div>
+                <div class="bg-black/50 border border-slate-800/90 p-2 rounded-lg">
+                  <span class="text-[9px] font-mono text-slate-500 block">REPLICATION LAG</span>
+                  <span class="text-sm font-mono font-bold text-indigo-400">0.8 ms</span>
+                </div>
+              </div>
+
+              <!-- Live Interactive CRUD Table -->
+              <div class="bg-black/40 border border-slate-800/90 rounded-lg overflow-hidden">
+                <div class="grid grid-cols-12 px-2.5 py-1.5 bg-slate-900/60 border-b border-slate-800 text-[10px] font-mono text-slate-400">
+                  <span class="col-span-4">USER / ACCOUNT</span>
+                  <span class="col-span-3">AMOUNT</span>
+                  <span class="col-span-2">STATUS</span>
+                  <span class="col-span-3 text-right">ACTION</span>
+                </div>
+
+                <div id="crudRecordList" class="divide-y divide-slate-800/60 text-xs font-mono">
+                  <!-- Row 1 -->
+                  <div id="row-1" class="grid grid-cols-12 px-2.5 py-2 items-center hover:bg-slate-900/40 transition-colors">
+                    <div class="col-span-4">
+                      <div class="text-slate-200 font-medium text-[11px] truncate">Acme SaaS Corp</div>
+                      <div class="text-[9px] text-slate-500">INV-8492 • Tier 1</div>
+                    </div>
+                    <div class="col-span-3 text-[11px] text-slate-300">$18,450.00</div>
+                    <div class="col-span-2">
+                      <span id="status-1" class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60">REVIEW</span>
+                    </div>
+                    <div class="col-span-3 flex justify-end gap-1">
+                      <button onclick="approveRecord(1)" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-[10px]">Approve</button>
+                      <button onclick="rejectRecord(1)" class="px-1.5 py-0.5 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 text-[10px]">✕</button>
+                    </div>
+                  </div>
+
+                  <!-- Row 2 -->
+                  <div id="row-2" class="grid grid-cols-12 px-2.5 py-2 items-center hover:bg-slate-900/40 transition-colors">
+                    <div class="col-span-4">
+                      <div class="text-slate-200 font-medium text-[11px] truncate">Vanguard Bio AI</div>
+                      <div class="text-[9px] text-slate-500">INV-8493 • Enterprise</div>
+                    </div>
+                    <div class="col-span-3 text-[11px] text-slate-300">$42,100.00</div>
+                    <div class="col-span-2">
+                      <span id="status-2" class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60">REVIEW</span>
+                    </div>
+                    <div class="col-span-3 flex justify-end gap-1">
+                      <button onclick="approveRecord(2)" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-[10px]">Approve</button>
+                      <button onclick="rejectRecord(2)" class="px-1.5 py-0.5 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 text-[10px]">✕</button>
+                    </div>
+                  </div>
+
+                  <!-- Row 3 -->
+                  <div id="row-3" class="grid grid-cols-12 px-2.5 py-2 items-center hover:bg-slate-900/40 transition-colors">
+                    <div class="col-span-4">
+                      <div class="text-slate-200 font-medium text-[11px] truncate">Orbit Robotics</div>
+                      <div class="text-[9px] text-slate-500">INV-8494 • Growth</div>
+                    </div>
+                    <div class="col-span-3 text-[11px] text-slate-300">$9,800.00</div>
+                    <div class="col-span-2">
+                      <span id="status-3" class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60">REVIEW</span>
+                    </div>
+                    <div class="col-span-3 flex justify-end gap-1">
+                      <button onclick="approveRecord(3)" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-[10px]">Approve</button>
+                      <button onclick="rejectRecord(3)" class="px-1.5 py-0.5 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 text-[10px]">✕</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Database activity ticker -->
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+                <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Postgres 16 • Optimistic Lock</span>
+                <span class="text-amber-400">Audit Trail: Logged</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Retool / Supabase</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">PostgreSQL</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Redis Cache</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">OAuth2 RBAC</span>
+          </div>
+          <button onclick="openDrawer('internal')" class="inline-flex items-center gap-1 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors group-hover:translate-x-0.5">
+            View Stack <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- SERVICE 4: LEAD GENERATION (Live Pipeline & Enrichment Engine) -->
+      <!-- ========================================================= -->
+      <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden group">
+        <div>
+          <!-- Title & tags -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400">
+                <i data-lucide="crosshair" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono uppercase tracking-wider text-rose-400 font-semibold">Service 04 // Revenue Infrastructure</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Algorithmic Lead Generation</h3>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-rose-950/70 text-rose-300 border border-rose-800/60">Live Radar</span>
+          </div>
+
+          <p class="text-sm text-slate-400 mb-5">
+            Autonomous waterfall discovery, multi-point enrichment (Apollo + Crustdata), intent scoring, and programmatic outreach sequences.
+          </p>
+
+          <!-- Interactive Radar & Pipeline Mockup -->
+          <div class="w-full bg-[#080b13] border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <!-- Radar Header -->
+            <div class="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800 text-xs font-mono text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+                <span class="text-slate-200 font-bold">Intent Radar // Sector: High-Growth B2B</span>
+              </div>
+              
+              <button onclick="pingManualRadarLead()" class="px-2 py-1 text-[11px] rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 transition-colors flex items-center gap-1 font-mono">
+                <i data-lucide="search" class="w-3 h-3"></i> Scan Market
+              </button>
+            </div>
+
+            <!-- Radar Graphic + Enriched Feed -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 p-3 gap-3 min-h-[290px] text-xs font-mono">
+              <!-- Left: Animated Vector Radar Scope -->
+              <div class="relative bg-slate-950 rounded-lg border border-slate-800/90 flex items-center justify-center overflow-hidden p-2">
+                <!-- Concentric rings -->
+                <div class="absolute w-44 h-44 rounded-full border border-rose-500/20"></div>
+                <div class="absolute w-32 h-32 rounded-full border border-rose-500/25"></div>
+                <div class="absolute w-16 h-16 rounded-full border border-rose-500/40"></div>
+                <div class="absolute w-full h-[1px] bg-rose-500/20"></div>
+                <div class="absolute h-full w-[1px] bg-rose-500/20"></div>
+
+                <!-- Rotating sweep beam -->
+                <div class="absolute inset-0 origin-center animate-radar-sweep pointer-events-none" style="background: conic-gradient(from 0deg, transparent 270deg, rgba(244, 63, 94, 0.3) 360deg);"></div>
+
+                <!-- Interactive Blips -->
+                <div id="radarBlip1" class="absolute top-8 right-8 w-2.5 h-2.5 rounded-full bg-rose-400 shadow-[0_0_10px_#f43f5e] transition-all"></div>
+                <div id="radarBlip2" class="absolute bottom-10 left-9 w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981] transition-all"></div>
+                <div id="radarBlip3" class="absolute top-16 left-12 w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4] transition-all"></div>
+
+                <div class="absolute bottom-2 left-2 text-[9px] text-rose-400 font-mono tracking-wider bg-black/60 px-1.5 py-0.5 rounded border border-rose-900/60">
+                  SCANNING FOR RECENT FUNDING
+                </div>
+              </div>
+
+              <!-- Right: Enriched Lead Stream with scoring -->
+              <div class="bg-black/50 p-2.5 rounded-lg border border-slate-800/90 flex flex-col justify-between">
+                <div class="space-y-1.5" id="enrichedLeadCards">
+                  
+                  <!-- Lead 1 -->
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] flex items-center justify-between">
+                    <div>
+                      <div class="font-bold text-slate-200 flex items-center gap-1">
+                        Synthetix AI <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-400 inline"></i>
+                      </div>
+                      <div class="text-[9px] text-slate-400">CTO & VP Eng • $18M Series A</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-400 font-mono text-[10px] font-bold">99% ICP</span>
+                  </div>
+
+                  <!-- Lead 2 -->
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] flex items-center justify-between">
+                    <div>
+                      <div class="font-bold text-slate-200 flex items-center gap-1">
+                        CloudStream Ltd <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-400 inline"></i>
+                      </div>
+                      <div class="text-[9px] text-slate-400">Head of Growth • 120 Emps</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-400 font-mono text-[10px] font-bold">95% ICP</span>
+                  </div>
+
+                  <!-- Lead 3 -->
+                  <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] flex items-center justify-between">
+                    <div>
+                      <div class="font-bold text-slate-200 flex items-center gap-1">
+                        HyperMetric Inc <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-400 inline"></i>
+                      </div>
+                      <div class="text-[9px] text-slate-400">Founder & CEO • FinTech</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 rounded bg-rose-950 border border-rose-700/60 text-rose-300 font-mono text-[10px] font-bold">91% ICP</span>
+                  </div>
+                </div>
+
+                <!-- Footer pipeline actions -->
+                <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                  <span class="text-rose-400">Outreach: 34 Enqueued</span>
+                  <span class="text-emerald-400 font-bold">48.2% Open Rate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Waterfall Enrichment</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Clay.com Engine</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">Cold Email Infra</span>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/60 text-slate-300 border border-slate-700/60">HubSpot Sync</span>
+          </div>
+          <button onclick="openDrawer('leadgen')" class="inline-flex items-center gap-1 text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors group-hover:translate-x-0.5">
+            View Stack <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-16 glass-card rounded-2xl p-8 sm:p-10 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold text-white tracking-tight">Need an integrated software & automation engine?</h3>
+        <p class="text-slate-400 text-sm max-w-xl">
+          We combine Next.js frontends, autonomous n8n workflows, bespoke internal tooling, and algorithmic outbound pipelines into a cohesive platform.
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="playUiSound(540, 'triangle', 0.1); alertToast('Booking portal requested. Our lead architect will contact you.');" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-teal-400 to-indigo-500 hover:from-cyan-300 hover:to-teal-300 text-slate-950 font-bold text-sm tracking-wide shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
+          Book Technical Review
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inspection Drawer Modal -->
+  <div id="serviceDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <div onclick="closeDrawer()" class="absolute inset-0 bg-black/75 backdrop-blur-md"></div>
+    
+    <div class="relative z-10 w-full max-w-xl glass-card rounded-2xl border border-slate-700/80 p-6 sm:p-8 shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden" id="drawerContent">
+      <button onclick="closeDrawer()" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800/60 border border-slate-700">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="drawerBody" class="space-y-4">
+        <!-- Injected dynamically via openDrawer() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert Notification Toast -->
+  <div id="customToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900/95 border border-cyan-500/50 px-4 py-3 rounded-xl text-xs font-mono text-cyan-300 shadow-2xl flex items-center gap-3 backdrop-blur-md">
+      <i data-lucide="terminal" class="w-4 h-4 text-cyan-400"></i>
+      <span id="customToastText">Telemetry alert</span>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. Web Audio API Tactile Sound Synthesis
+    // ==========================================
+    let audioCtx = null;
+    let soundEnabled = false;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playUiSound(freq = 440, type = 'sine', duration = 0.08) {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.4, audioCtx.currentTime + duration);
+
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    const soundToggle = document.getElementById('soundToggle');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundText = document.getElementById('soundText');
+
+    soundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      if (soundEnabled) {
+        initAudio();
+        soundIcon.setAttribute('data-lucide', 'volume-2');
+        soundText.textContent = 'AUDIO: ON';
+        soundText.classList.add('text-cyan-400');
+        playUiSound(580, 'triangle', 0.1);
+        alertToast('Tactile synthesizer enabled');
+      } else {
+        soundIcon.setAttribute('data-lucide', 'volume-x');
+        soundText.textContent = 'AUDIO: OFF';
+        soundText.classList.remove('text-cyan-400');
+        alertToast('Tactile synthesizer muted');
+      }
+      lucide.createIcons();
+    });
+
+    function alertToast(msg) {
+      const toast = document.getElementById('customToast');
+      const text = document.getElementById('customToastText');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // ==============================================================
+    // 2. Service 1: Animated Code Typing & Live Website Compiler
+    // ==============================================================
+    const codeLines = [
+      '<span class="text-purple-400">export default</span> <span class="text-cyan-300">function</span> <span class="text-yellow-300">Hero</span>() {',
+      '  <span class="text-purple-400">const</span> [edge] = <span class="text-blue-400">useRuntime</span>();',
+      '  <span class="text-purple-400">return</span> (',
+      '    &lt;<span class="text-cyan-400">div</span> <span class="text-emerald-400">className</span>=<span class="text-amber-300">"grid-mesh"</span>&gt;',
+      '      &lt;<span class="text-purple-400">Title</span>&gt;Next-Gen Cloud&lt;/<span class="text-purple-400">Title</span>&gt;',
+      '      &lt;<span class="text-cyan-400">CTA</span> <span class="text-emerald-400">glow</span> /&gt;',
+      '    &lt;/<span class="text-cyan-400">div</span>&gt;',
+      '  );',
+      '}'
+    ];
+
+    let typingTimer = null;
+
+    function runTypingAndCompile() {
+      const editor = document.getElementById('codeEditorArea');
+      const statusText = document.getElementById('compilerStatusText');
+      const buildLog = document.getElementById('buildLog');
+      const buildPercent = document.getElementById('buildPercent');
+      const progressBar = document.getElementById('compileProgressBar');
+      const flash = document.getElementById('compileFlash');
+      const renderedWebpage = document.getElementById('renderedWebpage');
+
+      if (typingTimer) clearTimeout(typingTimer);
+      editor.innerHTML = '';
+      statusText.textContent = 'TYPING CODE...';
+      statusText.className = 'text-amber-400 font-bold';
+      buildLog.textContent = 'Modifying AST...';
+      buildPercent.textContent = '0%';
+      progressBar.style.width = '10%';
+
+      let currentLine = 0;
+      function typeNextLine() {
+        if (currentLine < codeLines.length) {
+          const lineDiv = document.createElement('div');
+          lineDiv.className = 'whitespace-nowrap';
+          lineDiv.innerHTML = codeLines[currentLine];
+          editor.appendChild(lineDiv);
+          currentLine++;
+          
+          const progress = Math.floor((currentLine / codeLines.length) * 60);
+          progressBar.style.width = `${progress}%`;
+          buildPercent.textContent = `${progress}%`;
+          playUiSound(400 + currentLine * 30, 'sine', 0.03);
+
+          typingTimer = setTimeout(typeNextLine, 120);
+        } else {
+          // Finish typing -> Trigger Compilation Phase
+          statusText.textContent = 'VITE HMR COMPILING...';
+          statusText.className = 'text-cyan-400 font-bold animate-pulse';
+          buildLog.textContent = 'Tree-shaking & Edge Hydration...';
+          progressBar.style.width = '85%';
+          buildPercent.textContent = '85%';
+
+          typingTimer = setTimeout(() => {
+            // Compilation complete
+            progressBar.style.width = '100%';
+            buildPercent.textContent = '100%';
+            statusText.textContent = 'BUILD SUCCESS (12ms)';
+            statusText.className = 'text-emerald-400 font-bold';
+            buildLog.textContent = 'Rendered in DOM';
+
+            // Visual flash on mini browser
+            flash.classList.remove('opacity-0');
+            flash.classList.add('opacity-100');
+            playUiSound(880, 'triangle', 0.12);
+
+            setTimeout(() => {
+              flash.classList.remove('opacity-100');
+              flash.classList.add('opacity-0');
+              // Update mini latency counter
+              const ttfb = Math.floor(18 + Math.random() * 8);
+              document.getElementById('miniTtfbCounter').textContent = `${ttfb} ms`;
+            }, 300);
+
+          }, 600);
+        }
+      }
+
+      typeNextLine();
+    }
+
+    function restartCodeSimulation() {
+      playUiSound(520, 'sine', 0.05);
+      runTypingAndCompile();
+    }
+
+    // Responsive toggle for mini preview
+    function setPreviewMode(mode) {
+      playUiSound(600, 'sine', 0.04);
+      const container = document.getElementById('browserContainer');
+      const deskBtn = document.getElementById('viewDeskBtn');
+      const mobBtn = document.getElementById('viewMobBtn');
+
+      if (mode === 'mobile') {
+        container.style.maxWidth = '240px';
+        container.style.margin = '0 auto';
+        mobBtn.classList.add('bg-slate-800', 'text-cyan-300');
+        deskBtn.classList.remove('bg-slate-800', 'text-cyan-300');
+      } else {
+        container.style.maxWidth = '100%';
+        deskBtn.classList.add('bg-slate-800', 'text-cyan-300');
+        mobBtn.classList.remove('bg-slate-800', 'text-cyan-300');
+      }
+    }
+
+    let miniSiteState = false;
+    function toggleMiniSiteAction() {
+      miniSiteState = !miniSiteState;
+      const btn = document.getElementById('miniSiteBtn');
+      const title = document.getElementById('livePreviewTitle');
+      playUiSound(720, 'square', 0.08);
+
+      if (miniSiteState) {
+        btn.textContent = '✓ Cluster Active';
+        btn.className = 'px-3 py-1 rounded bg-emerald-400 text-slate-950 font-bold text-[10px] shadow-md shadow-emerald-500/20';
+        title.textContent = 'Global Edge Provisioned';
+        alertToast('Mini website cluster provisioned!');
+      } else {
+        btn.textContent = 'Deploy Stack';
+        btn.className = 'px-3 py-1 rounded bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-bold text-[10px] shadow-md shadow-cyan-500/20';
+        title.textContent = 'Next-Gen Cloud Runtime';
+      }
+    }
+
+    // Auto trigger typing on initial load
+    setTimeout(runTypingAndCompile, 400);
+
+    // ==============================================================
+    // 3. Service 2: n8n Workflow Canvas & Animated Bezier Pulses
+    // ==============================================================
+    let isN8nRunning = false;
+
+    function resetN8nVisuals() {
+      // Badges
+      document.getElementById('badgeWebhook').textContent = 'LISTENING';
+      document.getElementById('badgeWebhook').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-950/70 border border-rose-800/60 text-rose-300';
+      
+      document.getElementById('badgeLlm').textContent = 'IDLE';
+      document.getElementById('badgeLlm').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400';
+
+      document.getElementById('badgePinecone').textContent = 'IDLE';
+      document.getElementById('badgePinecone').className = 'text-[8px] font-mono px-1 py-0.5 rounded bg-slate-800 text-slate-400';
+
+      document.getElementById('badgeSlack').textContent = 'IDLE';
+      document.getElementById('badgeSlack').className = 'text-[8px] font-mono px-1 py-0.5 rounded bg-slate-800 text-slate-400';
+
+      // Nodes
+      ['nodeWebhook', 'nodeLlm', 'nodePinecone', 'nodeSlack'].forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('node-active', 'node-success');
+      });
+
+      // Packet opacities
+      document.getElementById('movingPacket1').setAttribute('class', 'opacity-0');
+      document.getElementById('movingPacket2').setAttribute('class', 'opacity-0');
+      document.getElementById('movingPacket3').setAttribute('class', 'opacity-0');
+    }
+
+    function animatePacketAlongPath(packetId, pathId, duration, onComplete) {
+      const packet = document.getElementById(packetId);
+      const path = document.getElementById(pathId);
+      const pathLength = path.getTotalLength();
+      const startTime = performance.now();
+
+      packet.setAttribute('class', 'opacity-100');
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const point = path.getPointAtLength(progress * pathLength);
+
+        packet.setAttribute('cx', point.x);
+        packet.setAttribute('cy', point.y);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          packet.setAttribute('class', 'opacity-0');
+          if (onComplete) onComplete();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function executeN8nWorkflow() {
+      if (isN8nRunning) return;
+      isN8nRunning = true;
+      resetN8nVisuals();
+
+      const telemetry = document.getElementById('n8nTelemetryStatus');
+      const timerLabel = document.getElementById('n8nExecTime');
+      const nodeWebhook = document.getElementById('nodeWebhook');
+      const nodeLlm = document.getElementById('nodeLlm');
+      const nodePinecone = document.getElementById('nodePinecone');
+      const nodeSlack = document.getElementById('nodeSlack');
+
+      const startTimestamp = performance.now();
+      telemetry.textContent = 'Event Ingest: Stripe webhook received signature #whsec_99';
+      playUiSound(480, 'sine', 0.08);
+
+      // Step 1: Webhook active
+      nodeWebhook.classList.add('node-active');
+      document.getElementById('badgeWebhook').textContent = 'PAYLOAD IN';
+      document.getElementById('badgeWebhook').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-rose-500 text-white font-bold animate-pulse';
+
+      // Animate packet from Webhook to LLM (Path 1)
+      animatePacketAlongPath('movingPacket1', 'wirePath1', 650, () => {
+        // Step 2: Arrived at LLM Agent
+        playUiSound(620, 'sine', 0.08);
+        nodeWebhook.classList.remove('node-active');
+        nodeWebhook.classList.add('node-success');
+        document.getElementById('badgeWebhook').textContent = '200 OK';
+        document.getElementById('badgeWebhook').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
+
+        nodeLlm.classList.add('node-active');
+        document.getElementById('badgeLlm').textContent = 'REASONING (42ms)';
+        document.getElementById('badgeLlm').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-purple-500 text-white font-bold animate-pulse';
+        telemetry.textContent = 'LLM Reasoning: Parsing prompt & evaluating customer intent score...';
+
+        setTimeout(() => {
+          // Split execution to Pinecone & Slack
+          playUiSound(780, 'sine', 0.08);
+          nodeLlm.classList.remove('node-active');
+          nodeLlm.classList.add('node-success');
+          document.getElementById('badgeLlm').textContent = 'CLASSIFIED';
+          document.getElementById('badgeLlm').className = 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
+
+          telemetry.textContent = 'Fork: Querying Pinecone Vector Index & sending Slack notification';
+
+          // Animate packet to Pinecone (Path 2)
+          animatePacketAlongPath('movingPacket2', 'wirePath2', 600, () => {
+            nodePinecone.classList.add('node-success');
+            document.getElementById('badgePinecone').textContent = 'MATCHED';
+            document.getElementById('badgePinecone').className = 'text-[8px] font-mono px-1 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
+          });
+
+          // Animate packet to Slack (Path 3)
+          animatePacketAlongPath('movingPacket3', 'wirePath3', 650, () => {
+            nodeSlack.classList.add('node-success');
+            document.getElementById('badgeSlack').textContent = 'NOTIFIED';
+            document.getElementById('badgeSlack').className = 'text-[8px] font-mono px-1 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800';
+
+            const totalTime = Math.round(performance.now() - startTimestamp);
+            timerLabel.textContent = `${totalTime} ms`;
+            telemetry.textContent = `Workflow Complete: Total execution time ${totalTime}ms. 0 errors.`;
+            playUiSound(920, 'triangle', 0.12);
+            isN8nRunning = false;
+          });
+
+        }, 700);
+      });
+    }
+
+    function showNodePayload(type) {
+      playUiSound(550, 'sine', 0.05);
+      const data = {
+        webhook: {
+          title: 'n8n Node: Webhook Trigger',
+          json: JSON.stringify({ event: 'customer.subscribed', customer_id: 'cus_8941', amount: 14900, currency: 'usd', status: 'verified' }, null, 2)
+        },
+        llm: {
+          title: 'n8n Node: LLM Reasoning Agent',
+          json: JSON.stringify({ model: 'gpt-4o-mini', intent: 'Enterprise Upgrade', confidence: 0.984, routing: ['pinecone_rag', 'slack_alerts'] }, null, 2)
+        },
+        vector: {
+          title: 'n8n Node: Pinecone Vector Database',
+          json: JSON.stringify({ top_k: 3, namespace: 'enterprise-kb', matched_chunk_id: 'doc_4412_sla', similarity: 0.942 }, null, 2)
+        },
+        slack: {
+          title: 'n8n Node: Slack Dispatch Action',
+          json: JSON.stringify({ channel: '#growth-signals', dispatched: true, http_status: 200, payload_delivered_at: new Date().toISOString() }, null, 2)
+        }
+      };
+
+      const selected = data[type];
+      alertToast(`Inspecting ${selected.title}`);
+    }
+
+    // ==============================================================
+    // 4. Service 3: Internal Tools Live CRUD Mutations
+    // ==============================================================
+    let pendingCount = 3;
+
+    function approveRecord(id) {
+      playUiSound(750, 'triangle', 0.08);
+      const status = document.getElementById(`status-${id}`);
+      status.textContent = 'APPROVED';
+      status.className = 'text-[9px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-700/60 font-bold';
+      
+      pendingCount = Math.max(0, pendingCount - 1);
+      document.getElementById('pendingApprovalCount').textContent = `${pendingCount} Records`;
+      alertToast(`Record INV-849${id+1} approved and committed to PostgreSQL`);
+    }
+
+    function rejectRecord(id) {
+      playUiSound(340, 'square', 0.08);
+      const row = document.getElementById(`row-${id}`);
+      row.style.opacity = '0.35';
+      const status = document.getElementById(`status-${id}`);
+      status.textContent = 'REJECTED';
+      status.className = 'text-[9px] px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 border border-rose-800/60';
+
+      pendingCount = Math.max(0, pendingCount - 1);
+      document.getElementById('pendingApprovalCount').textContent = `${pendingCount} Records`;
+      alertToast(`Record INV-849${id+1} flagged and rejected`);
+    }
+
+    function seedNewTransaction() {
+      playUiSound(600, 'sine', 0.05);
+      pendingCount++;
+      document.getElementById('pendingApprovalCount').textContent = `${pendingCount} Records`;
+      
+      const names = ['Krypton Systems', 'Helios Biotech', 'Nexus Quantum', 'AeroFlow Labs'];
+      const amounts = ['$24,300.00', '$16,750.00', '$8,900.00', '$33,120.00'];
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+      const newId = Math.floor(Math.random() * 9000 + 1000);
+
+      const list = document.getElementById('crudRecordList');
+      const newRow = document.createElement('div');
+      newRow.className = 'grid grid-cols-12 px-2.5 py-2 items-center hover:bg-slate-900/40 transition-colors animate-pulse';
+      newRow.innerHTML = `
+        <div class="col-span-4">
+          <div class="text-slate-200 font-medium text-[11px] truncate">${randomName}</div>
+          <div class="text-[9px] text-slate-500">INV-${newId} • Incoming</div>
+        </div>
+        <div class="col-span-3 text-[11px] text-slate-300">${randomAmount}</div>
+        <div class="col-span-2">
+          <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60">REVIEW</span>
+        </div>
+        <div class="col-span-3 flex justify-end gap-1">
+          <button onclick="this.parentElement.previousElementSibling.firstElementChild.textContent='APPROVED'; this.parentElement.previousElementSibling.firstElementChild.className='text-[9px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-700/60 font-bold'; alertToast('Approved record!'); playUiSound(720);" class="px-2 py-0.5 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-[10px]">Approve</button>
+        </div>
+      `;
+      list.prepend(newRow);
+      if (list.children.length > 4) {
+        list.removeChild(list.lastChild);
+      }
+      alertToast(`New optimistic record created: ${randomName}`);
+    }
+
+    // ==============================================================
+    // 5. Service 4: Lead Generation Radar & Enrichment Stream
+    // ==============================================================
+    function pingManualRadarLead() {
+      playUiSound(840, 'sine', 0.1);
+      const b1 = document.getElementById('radarBlip1');
+      const b2 = document.getElementById('radarBlip2');
+      const b3 = document.getElementById('radarBlip3');
+
+      // Shift blip coordinates
+      b1.style.top = `${12 + Math.random() * 65}%`;
+      b1.style.right = `${10 + Math.random() * 70}%`;
+      b2.style.bottom = `${12 + Math.random() * 65}%`;
+      b2.style.left = `${10 + Math.random() * 70}%`;
+
+      const targetCompanies = [
+        { name: 'Veloce Data', role: 'Head of Infra • 80-250 Emps', score: '99% ICP' },
+        { name: 'OmniChain Bio', role: 'VP AI Engineering • $24M Series B', score: '97% ICP' },
+        { name: 'Prism Robotics', role: 'Founder & CTO • Series A', score: '96% ICP' }
+      ];
+
+      const item = targetCompanies[Math.floor(Math.random() * targetCompanies.length)];
+      const list = document.getElementById('enrichedLeadCards');
+
+      const card = document.createElement('div');
+      card.className = 'p-2 rounded bg-rose-950/40 border border-rose-500/40 text-[11px] flex items-center justify-between transition-all';
+      card.innerHTML = `
+        <div>
+          <div class="font-bold text-rose-200 flex items-center gap-1">
+            ${item.name} <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-400 inline"></i>
+          </div>
+          <div class="text-[9px] text-slate-400">${item.role}</div>
+        </div>
+        <span class="px-1.5 py-0.5 rounded bg-emerald-950 border border-emerald-700/60 text-emerald-400 font-mono text-[10px] font-bold">${item.score}</span>
+      `;
+      list.prepend(card);
+      if (list.children.length > 3) {
+        list.removeChild(list.lastChild);
+      }
+      lucide.createIcons();
+      alertToast(`Discovered & enriched verified prospect: ${item.name}`);
+    }
+
+    // ==============================================================
+    // 6. Specification Modal Drawer
+    // ==============================================================
+    const serviceSpecs = {
+      webdev: {
+        title: 'High-Performance Web Engineering',
+        badge: 'REACT 19 • NEXT.JS • EDGE RUNTIMES',
+        color: 'cyan',
+        desc: 'We construct sub-50ms digital web engines. Every build features atomic bundle-splitting, server actions, automated responsive mockups, and end-to-end edge caching.',
+        bullets: [
+          'Full-Stack Next.js 15+ App Router architectures',
+          'Automated Vite HMR preview environments with sub-second compilation',
+          'Lighthouse 100/100 performance score guarantees',
+          'Tailwind CSS design systems with custom tokens & micro-interactions'
+        ]
+      },
+      aiauto: {
+        title: 'n8n & Autonomous AI Engineering',
+        badge: 'AGENTIC WORKFLOWS • RAG • DETERMINISTIC AI',
+        color: 'purple',
+        desc: 'We architect enterprise workflow canvases using n8n, LangChain, and vector indices. Replace brittle zap-chains with self-healing, multi-agent AI pipelines.',
+        bullets: [
+          'Production-grade n8n deployment with custom TypeScript nodes',
+          'Pinecone & pgvector semantic search & RAG retrieval graphs',
+          'Autonomous error-recovery and human-in-the-loop approvals',
+          'Bi-directional synchronization with Slack, HubSpot, and ERP systems'
+        ]
+      },
+      internal: {
+        title: 'Internal Operations & Dashboards',
+        badge: 'CRUD PORTALS • SECURE RBAC • POSTGRES',
+        color: 'amber',
+        desc: 'Bespoke administrative command centers tailored 100% to your proprietary operations. Eliminate messy spreadsheets with real-time optimistic CRUD engines.',
+        bullets: [
+          'High-density Retool, Appsmith, or custom Next.js admin consoles',
+          'Direct PostgreSQL & Redis caching connections with audit logging',
+          'Enterprise role-based access control (RBAC) & OAuth2 integrations',
+          'Sub-millisecond data replication telemetry'
+        ]
+      },
+      leadgen: {
+        title: 'Algorithmic Lead Generation Engine',
+        badge: 'WATERFALL ENRICHMENT • INTENT RADAR',
+        color: 'rose',
+        desc: 'Continuous scanning for companies demonstrating buying signals. Automated enrichment pipelines convert intent spikes into high-converting booked meetings.',
+        bullets: [
+          'Multi-source waterfall verification (Apollo + LinkedIn + Crustdata)',
+          'Algorithmic ICP scoring and AI personalization layers',
+          'Dedicated cold email deliverability infrastructure (SPF/DKIM/DMARC)',
+          'Native CRM pipeline synchronization'
+        ]
+      }
+    };
+
+    function openDrawer(serviceKey) {
+      playUiSound(520, 'sine', 0.08);
+      const data = serviceSpecs[serviceKey];
+      if (!data) return;
+
+      const body = document.getElementById('drawerBody');
+      body.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-${data.color}-950/80 border border-${data.color}-800/80 text-${data.color}-400 font-bold">
+            ${data.badge}
+          </span>
+        </div>
+        <h2 class="text-2xl font-bold text-white tracking-tight">${data.title}</h2>
+        <p class="text-sm text-slate-300 leading-relaxed">${data.desc}</p>
+        
+        <div class="pt-3 border-t border-slate-800">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 font-semibold">Core Deliverables</h4>
+          <ul class="space-y-2">
+            ${data.bullets.map(b => `
+              <li class="flex items-start gap-2 text-xs text-slate-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-${data.color}-400 mt-1.5 flex-shrink-0"></span>
+                <span>${b}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+
+        <div class="pt-4 mt-6 flex justify-end gap-3">
+          <button onclick="closeDrawer()" class="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white rounded-lg bg-slate-900 border border-slate-800">
+            Dismiss
+          </button>
+          <button onclick="closeDrawer(); playUiSound(720); alertToast('Architecture proposal dispatched to your calendar.');" class="px-4 py-2 text-xs font-bold text-slate-950 rounded-lg bg-${data.color}-400 hover:bg-${data.color}-300 transition-colors shadow-lg">
+            Schedule Architecture Session
+          </button>
+        </div>
+      `;
+
+      const drawer = document.getElementById('serviceDrawer');
+      const content = document.getElementById('drawerContent');
+      drawer.classList.remove('pointer-events-none', 'opacity-0');
+      content.classList.remove('scale-95');
+      content.classList.add('scale-100');
+      lucide.createIcons();
+    }
+
+    function closeDrawer() {
+      playUiSound(400, 'sine', 0.05);
+      const drawer = document.getElementById('serviceDrawer');
+      const content = document.getElementById('drawerContent');
+      drawer.classList.add('pointer-events-none', 'opacity-0');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    // Initialize Lucide icons
+    window.onload = function() {
+      lucide.createIcons();
+    };
+  </script>
+</body>
+</html>

@@ -2,19 +2,19 @@ import Navbar      from "@/components/Navbar";
 import HeroSection from "@/components/sections/StarHero";
 import StarHoverHeroSection from "@/components/sections/StarHoverHero";
 import Hero        from "@/components/sections/Hero";
-import Services    from "@/components/sections/Services";
+import Services    from "@/components/sections/Services2";
 import Pricing     from "@/components/sections/Pricing";
 import Projects    from "@/components/sections/Projects";
 import AuditBanner from "@/components/sections/AuditBanner";
 import ContactForm from "@/components/sections/ContactForm";
 import { Footer, WhatsAppButton } from "@/components/sections/Footer";
 import {
-  Process,
   Metrics,
   Testimonials,
   BlogPreview,
   FAQ,
 } from "@/components/sections/Sections";
+import Process from "@/components/sections/Process";
 import { Separator } from "@/components/ui/separator";
 
 function Divider() {
