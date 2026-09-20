@@ -77,7 +77,7 @@ export default function Pricing() {
         {/* Header */}
         <div className="text-center mb-8">
           <span className="badge-blue mb-4">Transparent Pricing</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Simple, <span className="text-amber">Monthly Plans</span>
           </h2>
           <p className="text-white text-base max-w-md mx-auto">
@@ -134,11 +134,11 @@ export default function Pricing() {
                 </div>
                 <div
                   className="font-heading font-bold"
-                  style={{
-                    fontSize: "2.2rem",
-                    color: plan.color === "amber" ? "#F59E0B" : "#00D4FF",
-                    lineHeight: 1,
-                  }}
+             style={{
+               fontSize: "1.8rem",
+               color: plan.color === "amber" ? "#F59E0B" : "#00D4FF",
+               lineHeight: 1,
+             }}
                 >
                   {plan.price}
                 </div>

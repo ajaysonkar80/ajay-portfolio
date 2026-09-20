@@ -106,7 +106,7 @@ const StepCard: React.FC<StepCardProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      className={`group relative flex flex-col justify-between p-6 md:p-8 rounded-2xl cursor-pointer transition-all duration-500 border ${
+       className={`group relative flex flex-col justify-between p-6 rounded-2xl cursor-pointer transition-all duration-500 border ${
         isActive
           ? isCyan
             ? "border-cyan-500/50 bg-[#0a1219]/90 shadow-[0_0_35px_rgba(0,200,255,0.12)] scale-[1.02]"
@@ -163,8 +163,8 @@ const StepCard: React.FC<StepCardProps> = ({
         </div>
 
         {/* Title */}
-        <h3
-          className={`text-xl md:text-2xl font-serif font-bold tracking-tight mb-3 transition-colors ${
+         <h3
+           className={`text-lg font-serif font-bold tracking-tight mb-3 transition-colors ${
             isActive ? "text-white" : "text-neutral-200 group-hover:text-white"
           }`}
         >
@@ -172,7 +172,7 @@ const StepCard: React.FC<StepCardProps> = ({
         </h3>
 
         {/* Description */}
-        <p className="text-neutral-400 text-sm md:text-base leading-relaxed mb-6 font-sans">
+         <p className="text-neutral-400 text-sm leading-relaxed mb-6 font-sans">
           {step.description}
         </p>
       </div>
@@ -232,7 +232,7 @@ export default function Process(): React.JSX.Element {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto z-10">
+       <div className="relative max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="max-w-3xl mb-16 md:mb-20">
           {/* Badge */}
@@ -242,7 +242,7 @@ export default function Process(): React.JSX.Element {
           </div>
 
           {/* Heading */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-[1.1]">
+           <h2 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-white mb-6 leading-[1.1]">
             From Idea to{" "}
             <span className="bg-gradient-to-r from-[#00b4d8] via-[#00f2fe] to-[#38bdf8] bg-clip-text text-transparent italic font-serif">
               Live Product
@@ -250,13 +250,13 @@ export default function Process(): React.JSX.Element {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-neutral-400 text-base sm:text-lg md:text-xl font-light tracking-wide max-w-xl">
+           <p className="text-neutral-400 text-base md:text-lg font-light tracking-wide max-w-xl">
             A simple 4-step process — no jargon, no confusion.
           </p>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
           {stepsData.map((step) => (
             <StepCard
               key={step.id}
@@ -274,7 +274,7 @@ export default function Process(): React.JSX.Element {
         </div>
 
         {/* Deep Dive Milestone Preview Drawer */}
-        <div className="mt-10 p-6 md:p-8 rounded-2xl border border-white/10 bg-[#080d14]/70 backdrop-blur-md">
+         <div className="mt-10 p-6 rounded-2xl border border-white/10 bg-[#080d14]/70 backdrop-blur-md">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/5">
             <div className="flex items-center gap-4">
               <div

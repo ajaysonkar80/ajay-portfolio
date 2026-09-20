@@ -1,4 +1,4 @@
-import AnimatedServiceCards from "@/components/services/AnimatedServiceCards";
+
 import Services from "@/components/sections/Services2";
 export default function ServicesPage() {
   return (

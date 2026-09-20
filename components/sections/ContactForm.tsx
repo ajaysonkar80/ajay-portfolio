@@ -116,16 +116,16 @@ export default function ContactForm() {
         {/* Header */}
         <div className="text-center mb-14">
           <span className="badge-blue mb-4">Ready to Start?</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-            Let&apos;s <span className="text-neon">Work Together</span>
-          </h2>
-          <p className="text-white text-base max-w-md mx-auto">
-            Tell me your project — I&apos;ll reply within 24 hours with a clear plan.
-          </p>
+         <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          Let&apos;s <span className="text-neon">Work Together</span>
+        </h2>
+        <p className="text-white text-base max-w-md mx-auto">
+          Tell me your project — I&apos;ll reply within 24 hours with a clear plan.
+        </p>
         </div>
 
-        <Card className="glass border-0 bg-transparent">
-          <CardContent className="p-8">
+           <Card className="glass border-0 bg-transparent">
+           <CardContent className="p-6">
             {status === "success" ? (
               <div className="text-center py-12">
                 <div className="text-5xl mb-4">🎉</div>

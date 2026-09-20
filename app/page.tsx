@@ -16,7 +16,7 @@ import {
 } from "@/components/sections/Sections";
 import Process from "@/components/sections/Process";
 import { Separator } from "@/components/ui/separator";
-
+import BookingScheduler from "@/components/sections/BookingsScheduler";
 function Divider() {
   return (
     <div className="px-8">
@@ -91,6 +91,7 @@ export default function HomePage() {
       <Divider />
       <Projects />
       <Divider />
+      <BookingScheduler/>
       <ContactForm />
       <Divider />
       <FAQ />

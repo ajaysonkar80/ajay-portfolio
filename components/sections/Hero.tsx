@@ -58,7 +58,7 @@ export default function Hero() {
       {/* -----------------------------------------------------------------
           Main content
       ----------------------------------------------------------------- */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+        <div className="relative z-10 text-center max-w-3xl mx-auto">
         
         {/* Availability chip */}
         <Badge
@@ -76,47 +76,47 @@ export default function Hero() {
         </Badge>
 
         {/* Main heading */}
-        <h1
-          className="font-heading font-black text-white mb-6"
-          style={{ fontSize: "clamp(2.2rem, 6vw, 4.2rem)", lineHeight: 1.1 }}
-        >
-          Your customers are searching for you.{" "}
-          <br />
-          Can they find you?
-        </h1>
+         <h1
+           className="font-heading font-black text-white mb-6"
+           style={{ fontSize: "clamp(1.8rem, 5vw, 3.2rem)", lineHeight: 1.1 }}
+         >
+           Your customers are searching for you.{" "}
+           <br />
+           Can they find you?
+         </h1>
 
         {/* Subheading */}
-        <p
-          className="text-white mx-auto mb-10 leading-relaxed"
-          style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", maxWidth: "520px" }}
-        >
-          I help local businesses in Raipur get more customers, save time on repetitive work,
-          and stop losing leads. No technical jargon. Clear monthly pricing.
-        </p>
+         <p
+           className="text-white mx-auto mb-8 leading-relaxed"
+           style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", maxWidth: "520px" }}
+         >
+           I help local businesses in Raipur get more customers, save time on repetitive work,
+           and stop losing leads. No technical jargon. Clear monthly pricing.
+         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-          <Button
-            asChild
-            className="btn-neon h-auto px-8 py-4 text-base"
-            style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
-          >
-            <Link href="#contact">Request a Free Quote</Link>
-          </Button>
+         {/* CTAs */}
+         <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+           <Button
+             asChild
+             className="btn-neon h-auto px-6 py-3 text-sm"
+             style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
+           >
+             <Link href="#contact">Request a Free Quote</Link>
+           </Button>
 
-          <Button
-            asChild
-            variant="outline"
-            className="btn-outline h-auto px-8 py-4 text-base"
-            style={{
-              background: "transparent",
-              color: "#00D4FF",
-              border: "1px solid rgba(0,212,255,0.4)",
-            }}
-          >
-            <Link href="/services">See How I Fix Problems →</Link>
-          </Button>
-        </div>
+           <Button
+             asChild
+             variant="outline"
+             className="btn-outline h-auto px-6 py-3 text-sm"
+             style={{
+               background: "transparent",
+               color: "#00D4FF",
+               border: "1px solid rgba(0,212,255,0.4)",
+             }}
+           >
+             <Link href="/services">See How I Fix Problems →</Link>
+           </Button>
+         </div>
 
         {/* -----------------------------------------------------------------
             Trust strip - Using SVG Images

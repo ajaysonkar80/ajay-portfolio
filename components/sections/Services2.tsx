@@ -109,7 +109,7 @@ function WebDevCard() {
               <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-cyan-400">
                 Service 01 // Core Web
               </span>
-              <h3 className="text-xl font-bold tracking-tight text-white">Full-Stack Web Development</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">Full-Stack Web Development</h3>
             </div>
           </div>
           <span className="rounded border border-cyan-900/80 bg-cyan-950/60 px-2.5 py-0.5 font-mono text-[11px] text-cyan-300">
@@ -332,7 +332,7 @@ function AIAutomationCard() {
               <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-purple-400">
                 Service 02 // Agentic Workflows
               </span>
-              <h3 className="text-xl font-bold tracking-tight text-white">AI & n8n Automation</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">AI & n8n Automation</h3>
             </div>
           </div>
           <span className="rounded border border-purple-900/80 bg-purple-950/60 px-2.5 py-0.5 font-mono text-[11px] text-purple-300">
@@ -577,7 +577,7 @@ function InternalToolsCard() {
               <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-amber-400">
                 Service 03 // Operations & RBAC
               </span>
-              <h3 className="text-xl font-bold tracking-tight text-white">Custom Internal Tools</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">Custom Internal Tools</h3>
             </div>
           </div>
           <span className="rounded border border-amber-900/80 bg-amber-950/60 px-2.5 py-0.5 font-mono text-[11px] text-amber-300">
@@ -776,9 +776,9 @@ export function LeadGenCard() {
               <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-rose-400">
                 Service 04 // Outbound Growth
               </span>
-              <h3 className="text-xl font-bold tracking-tight text-white">
-                Algorithmic Lead Generation
-              </h3>
+             <h3 className="text-lg font-bold tracking-tight text-white">
+               Algorithmic Lead Generation
+             </h3>
             </div>
           </div>
           <span className="rounded border border-rose-900/80 bg-rose-950/60 px-2.5 py-0.5 font-mono text-[11px] text-rose-300">
@@ -915,15 +915,15 @@ export default function Services() {
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
             Interactive Core Capabilities
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Engineered For Scale. <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 bg-clip-text text-transparent">
-              Autonomous, Fast, and Mission-Critical.
-            </span>
-          </h2>
-          <p className="mt-4 text-base text-slate-400 sm:text-lg leading-relaxed">
-            Test and interact with each dynamic system below. We bridge high-performance frontend architecture with autonomous n8n workflows and revenue engines.
-          </p>
+           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+             Engineered For Scale. <br />
+             <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 bg-clip-text text-transparent">
+               Autonomous, Fast, and Mission-Critical.
+             </span>
+           </h2>
+           <p className="mt-4 text-base text-slate-400 leading-relaxed">
+             Test and interact with each dynamic system below. We bridge high-performance frontend architecture with autonomous n8n workflows and revenue engines.
+           </p>
         </div>
 
         {/* The 4 Exclusive Service Cards Grid */}

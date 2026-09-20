@@ -25,7 +25,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-heading font-black text-white mb-6 text-4xl md:text-5xl lg:text-6xl leading-tight"
+            className="font-heading font-black text-white mb-6 text-3xl md:text-4xl leading-tight"
           >
             Your Local Tech Partner in{" "}
             <span className="text-neon">Raipur</span>
@@ -34,7 +34,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white mx-auto leading-relaxed text-base md:text-lg max-w-2xl"
+            className="text-white mx-auto leading-relaxed text-base max-w-2xl"
           >
             I help local businesses solve technical problems, build digital products,
             and automate workflows — so you can focus on running your business,
@@ -140,7 +140,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-white mx-auto mb-8 leading-relaxed text-base md:text-lg max-w-xl"
+            className="text-white mx-auto mb-8 leading-relaxed text-base max-w-xl"
           >
             I genuinely like to get to know my clients personally. Whether it's about
             business, hobbies, or just life — feel free to reach out. I'm always happy
@@ -213,7 +213,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
-            className="font-heading font-bold text-white mb-4 text-3xl md:text-4xl"
+             className="font-heading font-bold text-white mb-4 text-2xl md:text-3xl"
           >
             Have a Technical Need?
           </motion.h2>

@@ -45,7 +45,7 @@ export default function Projects() {
         {/* Header */}
         <div className="mb-14">
           <span className="badge-blue mb-4">Selected Work</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Projects That <span className="text-neon">Deliver</span>
           </h2>
           <p className="text-white text-lg max-w-xl">

@@ -42,10 +42,10 @@ export default async function WorkPage() {
       {/* Hero */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-heading font-black text-white text-4xl md:text-5xl lg:text-6xl mb-6">
+           <h1 className="font-heading font-black text-white text-3xl md:text-4xl mb-6">
             Selected <span className="text-neon">Work</span>
           </h1>
-          <p className="text-white text-lg max-w-xl leading-relaxed">
+           <p className="text-white text-base max-w-xl leading-relaxed">
             Real products built for real businesses — AI systems, web applications, and automation tools that solve actual problems.
           </p>
         </div>
@@ -66,7 +66,7 @@ export default async function WorkPage() {
                     tagStyle === "amber" ? "glass-amber" : "glass"
                   } ${isUnderDev ? " cursor-not-allowed" : ""} cursor-pointer overflow-hidden`}
                 >
-                  <CardContent className="p-6">
+                    <CardContent className="p-5">
                     {/* Image placeholder */}
                     <div
                       className="w-full rounded-lg mb-4 flex items-center justify-center text-sm font-mono"
@@ -90,7 +90,7 @@ export default async function WorkPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-heading text-xl font-bold text-white mb-2">
+                    <h3 className="font-heading text-lg font-bold text-white mb-2">
                       {project.title}
                     </h3>
 

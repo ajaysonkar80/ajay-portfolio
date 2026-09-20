@@ -91,10 +91,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* Project Header */}
       <section className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-heading font-black text-white text-4xl md:text-5xl lg:text-6xl mb-6">
+           <h1 className="font-heading font-black text-white text-3xl md:text-4xl mb-6">
             {project.title}
           </h1>
-          <p className="text-white text-lg max-w-2xl leading-relaxed mb-8">
+           <p className="text-white text-base max-w-2xl leading-relaxed mb-8">
             {project.description}
           </p>
 
@@ -172,11 +172,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <div className="max-w-5xl mx-auto">
                 <div className="flex items-center gap-3 mb-6">
                   <Layers className="w-6 h-6 text-neon" />
-                  <h2 className="font-heading font-bold text-white text-2xl">
+           <h2 className="font-heading font-bold text-white text-xl">
                     Architecture
                   </h2>
                 </div>
-                <p className="text-white/80 text-lg leading-relaxed">
+           <p className="text-white/80 text-base leading-relaxed">
                   {project.caseStudy.architecture}
                 </p>
               </div>
@@ -203,13 +203,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* CTA */}
       <section className="py-20 px-6 bg-gradient-to-b from-transparent to-white/5">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading font-bold text-white text-3xl mb-4">
+           <h2 className="font-heading font-bold text-white text-2xl mb-4">
             Have a Similar Project in Mind?
           </h2>
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
             Let&apos;s discuss how we can build something together.
           </p>
-          <Button asChild className="px-8 py-6 text-lg">
+           <Button asChild className="px-6 py-3 text-sm font-semibold">
             <Link href="https://wa.me/918319928445?text=Hi%20Ajay,%20I%20like%20to%20discuss%20a%20project">
               Start a Conversation
             </Link>
