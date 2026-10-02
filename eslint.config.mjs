@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored / unrelated tooling (not part of the Next.js app):
+    "mcp-whatsapp-web/**",
+    "graphiti/**",
+    "whatsapp-mcp/**",
+    "temp/**",
   ]),
 ]);
 

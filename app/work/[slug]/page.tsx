@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-background flex items-center justify-center">
+      <main id="main-content" className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
           <Button asChild variant="outline">
@@ -74,7 +74,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const isUnderDev = !project.liveUrl || project.liveUrl === "Under Development";
 
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Back button */}
       <section className="py-8 px-6">
         <div className="max-w-5xl mx-auto">

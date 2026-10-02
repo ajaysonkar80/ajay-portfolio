@@ -9,7 +9,7 @@ export function Footer() {
     { label: "WhatsApp", href: "https://wa.me/918319928445",      external: true  },
     { label: "Email",    href: "mailto:hello@ajaysonkar.com",     external: false },
     { label: "GitHub",   href: "https://github.com/ajaysonkar80", external: true  },
-    { label: "LinkedIn", href: "www.linkedin.com/in/ajay-sonkar-07383921a",                               external: false },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ajay-sonkar-07383921a", external: true },
   ];
 
   return (

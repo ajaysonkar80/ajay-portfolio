@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#080c14] to-[#0a101a]">
+    <main id="main-content" className="min-h-screen bg-gradient-to-b from-[#080c14] to-[#0a101a]">
       {/* Hero Section */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div

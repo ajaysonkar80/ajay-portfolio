@@ -38,7 +38,7 @@ export default async function WorkPage() {
   });
 
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Hero */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">

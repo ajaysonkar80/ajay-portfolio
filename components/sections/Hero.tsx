@@ -1,36 +1,20 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import StarField from "@/components/sections/StarField";
 
-const rotatingWords = ["Websites", "Automations", "SaaS Products", "Lead Systems"];
+const trustStrip = [
+  { icon: "/map-pin-icon.svg", label: "Based in Raipur, CG", alt: "Location" },
+  { icon: "/24-hours-color-icon.svg", label: "Replies within 24hrs", alt: "Response time" },
+  { icon: "/gold-coin-rupee-icon.svg", label: "Starts at ₹7,000/mo", alt: "Pricing" },
+  { icon: "/contract.svg", label: "Min. 6-month contracts", alt: "Contract" },
+];
 
 export default function Hero() {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  /* Rotate words with fade‑in/out */
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setWordIndex((i) => (i + 1) % rotatingWords.length);
-        setVisible(true);
-      }, 300);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
-      {/* -----------------------------------------------------------------
-          Background mesh (Static)
-      ----------------------------------------------------------------- */}
+    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-20">
+      {/* Static background mesh */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 -z-20 pointer-events-none"
         style={{
           background: `
             radial-gradient(ellipse 70% 50% at 50% 0%,   rgba(0,212,255,0.13) 0%, transparent 65%),
@@ -40,134 +24,86 @@ export default function Hero() {
         }}
       />
 
-      {/* -----------------------------------------------------------------
-          Grid texture (Static)
-      ----------------------------------------------------------------- */}
+      {/* Static grid texture */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 -z-20 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `
             linear-gradient(rgba(0,212,255,0.5) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0,212,255,0.5) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
-          backgroundPosition: "0px 0px",
         }}
       />
 
-      {/* -----------------------------------------------------------------
-          Main content
-      ----------------------------------------------------------------- */}
-        <div className="relative z-10 text-center max-w-3xl mx-auto">
-        
+      {/* Star canvas — lazy, automatic, decorative */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <StarField />
+      </div>
+
+      <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
         {/* Availability chip */}
-        <Badge
-          variant="outline"
-          className="mb-8 px-4 py-2 text-sm gap-2 rounded-full border-0 inline-flex items-center"
-          style={{
-            background: "rgba(245,158,11,0.1)",
-            border: "1px solid rgba(245,158,11,0.3)",
-            color: "#F59E0B",
-          }}
-        >
-          {/* Static dot replacing the blinking animation */}
-          <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+        <p className="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm text-amber-500">
+          <span className="w-2 h-2 rounded-full bg-amber-500" aria-hidden="true" />
           Open to projects — Raipur &amp; Remote
-        </Badge>
+        </p>
 
-        {/* Main heading */}
-         <h1
-           className="font-heading font-black text-white mb-6"
-           style={{ fontSize: "clamp(1.8rem, 5vw, 3.2rem)", lineHeight: 1.1 }}
-         >
-           Your customers are searching for you.{" "}
-           <br />
-           Can they find you?
-         </h1>
+        <h1 className="font-heading font-black text-white mb-6 text-balance max-w-2xl mx-auto text-3xl md:text-4xl lg:text-[3.5rem] leading-[1.1]">
+          Get a website that brings you customers.
+        </h1>
 
-        {/* Subheading */}
-         <p
-           className="text-white mx-auto mb-8 leading-relaxed"
-           style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", maxWidth: "520px" }}
-         >
-           I help local businesses in Raipur get more customers, save time on repetitive work,
-           and stop losing leads. No technical jargon. Clear monthly pricing.
-         </p>
+        <p className="text-slate-300 mx-auto mb-9 max-w-xl leading-relaxed text-base md:text-lg">
+          Your competitors are taking away the customers that should be yours.
+        </p>
 
-         {/* CTAs */}
-         <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-           <Button
-             asChild
-             className="btn-neon h-auto px-6 py-3 text-sm"
-             style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
-           >
-             <Link href="#contact">Request a Free Quote</Link>
-           </Button>
+        {/* CTAs — min 44px touch targets */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+          <Button
+            asChild
+            className="btn-neon h-auto min-h-11 px-6 py-3 text-sm rounded-md"
+            style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
+          >
+            {/* TODO: replace href with the production WhatsApp link (owner-managed) */}
+            <a href="#contact">Message me on WhatsApp</a>
+          </Button>
 
-           <Button
-             asChild
-             variant="outline"
-             className="btn-outline h-auto px-6 py-3 text-sm"
-             style={{
-               background: "transparent",
-               color: "#00D4FF",
-               border: "1px solid rgba(0,212,255,0.4)",
-             }}
-           >
-             <Link href="/services">See How I Fix Problems →</Link>
-           </Button>
-         </div>
-
-        {/* -----------------------------------------------------------------
-            Trust strip - Using SVG Images
-        ----------------------------------------------------------------- */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
-          
-          <div className="flex items-center gap-2 text-sm text-white">
-            <img 
-              src="/map-pin-icon.svg" 
-              alt="Location" 
-              className="w-4 h-4 shrink-0" 
-            />
-            <span>Based in Raipur, CG</span>
-          </div>
-
-          <div className="flex items-center gap-2 text-white">
-            <img 
-              src="/24-hours-color-icon.svg" 
-              alt="Clock" 
-              className="w-4 h-4 shrink-0" 
-            />
-            <span>Replies within 24hrs</span>
-          </div>
-
-          <div className="flex items-center gap-2 text-sm text-white">
-            <img 
-              src="/gold-coin-rupee-icon.svg" 
-              alt="Pricing" 
-              className="w-4 h-4 shrink-0" 
-            />
-            <span>Starts at ₹7,000/mo</span>
-          </div>
-
-          <div className="flex items-center gap-2 text-sm text-white">
-            <img 
-              src="/contract.svg" 
-              alt="Contract" 
-              className="w-4 h-4 shrink-0" 
-            />
-            <span>Min. 6‑month contracts</span>
-          </div>
-
+          <Button
+            asChild
+            variant="outline"
+            className="btn-outline h-auto min-h-11 px-6 py-3 text-sm rounded-md"
+            style={{
+              background: "transparent",
+              color: "#00D4FF",
+              border: "1px solid rgba(0,212,255,0.4)",
+            }}
+          >
+            <a href="#projects">See Sample websites</a>
+          </Button>
         </div>
+
+        {/* Trust strip */}
+        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+          {trustStrip.map((item) => (
+            <li key={item.label} className="flex items-center gap-2 text-sm text-white">
+              <Image
+                src={item.icon}
+                alt=""
+                aria-hidden="true"
+                width={16}
+                height={16}
+                className="w-4 h-4 shrink-0"
+              />
+              <span>{item.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* -----------------------------------------------------------------
-          Scroll indicator (Static line)
-      ----------------------------------------------------------------- */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <div className="w-px h-10 bg-linear-to-b from-[rgba(0,212,255,0.5)] to-transparent" />
-      </div>
+      {/* Scroll indicator */}
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 w-px h-10 bg-linear-to-b from-cyan-400/50 to-transparent"
+        aria-hidden="true"
+      />
     </section>
   );
 }

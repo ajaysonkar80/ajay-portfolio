@@ -17,6 +17,7 @@ export default async function BlogListing() {
   const posts = await getPosts();
 
   return (
+    <main id="main-content" className="min-h-screen bg-background">
     <section className="py-24 px-6 max-w-5xl mx-auto">
       <div className="mb-12 text-center">
         <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
@@ -43,5 +44,6 @@ export default async function BlogListing() {
         ))}
       </div>
     </section>
+    </main>
   );
 }

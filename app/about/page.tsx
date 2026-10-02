@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div

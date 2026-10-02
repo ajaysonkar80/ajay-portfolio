@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Pricing",  href: "pricing"  },
+  { label: "Pricing",  href: "/pricing"  },
   { label: "Work",     href: "/work"     },
-  { label: "Blog",     href: "blog"     },
+  { label: "Blog",     href: "/blog"     },
 ];
 
 export default function Navbar() {
@@ -60,9 +60,11 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-2 min-h-11 min-w-11 items-center justify-center"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span className="block w-5 h-0.5 bg-white transition-all duration-300" style={{ transform: menuOpen ? "rotate(45deg) translate(4px,4px)" : "none" }} />
           <span className="block w-5 h-0.5 bg-white transition-all duration-300" style={{ opacity: menuOpen ? 0 : 1 }} />
@@ -72,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden px-6 pb-6 pt-2" style={{ background: "rgba(8,12,20,0.98)", borderBottom: "1px solid rgba(0,212,255,0.1)" }}>
+        <div id="mobile-menu" className="md:hidden px-6 pb-6 pt-2" style={{ background: "rgba(8,12,20,0.98)", borderBottom: "1px solid rgba(0,212,255,0.1)" }}>
           {navLinks.map((l) => (
             <Link
               key={l.href}

@@ -56,17 +56,25 @@ export default function Projects() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {projects.map((p) => {
-            const isClickable = p.liveUrl && p.liveUrl.startsWith("http");
             const isUnderDev = p.badge === "Under Development";
 
             // Card component – shared styling for all projects
             const card = (
               <Card
-                className={`glass-hover border-0 bg-transparent ${
+                className={`relative glass-hover border-0 bg-transparent ${
                   p.tagStyle === "amber" ? "glass-amber" : "glass"
                 } ${isUnderDev ? "  cursor-not-allowed" : ""} cursor-pointer`}
               >
                 <CardContent className="p-5">
+                  {/* Stretched link: card body → detail page.
+                      Sits under the Live/GitHub buttons so no nested <a>. */}
+                  {!isUnderDev && (
+                    <Link
+                      href={`/work/${p.title.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="absolute inset-0 z-10 rounded-xl"
+                      aria-label={`View ${p.title} details`}
+                    />
+                  )}
                   {/* Image placeholder */}
                   <div
                     className="w-full rounded-lg mb-4 flex items-center justify-center text-sm font-mono"
@@ -125,7 +133,7 @@ export default function Projects() {
                   </div>
 
                   {/* Links – only for non‑under‑development projects */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 relative z-20">
                     {p.badge !== "Under Development" &&
                       p.liveUrl &&
                       p.liveUrl !== "#" &&
@@ -167,16 +175,8 @@ export default function Projects() {
               );
             }
 
-            // Clickable cards: link to work detail page
-            return (
-              <Link
-                href={`/work/${p.title.toLowerCase().replace(/\s+/g, "-")}`}
-                key={p.title}
-                className="block"
-              >
-                {card}
-              </Link>
-            );
+            // Clickable cards: stretched link inside the card handles navigation
+            return <div key={p.title}>{card}</div>;
           })}
         </div>
       </div>
