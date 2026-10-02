@@ -7,6 +7,9 @@
 
 ---
 
+## things to do now :
+-[]
+
 ## 🔍 SEO & Discovery (High Priority)
 
 - [ ] **Open Graph meta tags** on all pages (title, description, image, url)

@@ -1,0 +1,317 @@
+/* ==========================================================================
+   ajaysonkar.com — design tokens
+   Stack: Next.js 15 · Tailwind v4 · shadcn/ui
+   Usage: import in app/globals.css AFTER `@import "tailwindcss";`
+   Direction: bold + modern. Cyan #00D4FF primary, amber #F59E0B accent.
+   Modes: light + dark (toggle with `.dark` class on <html>).
+   Rules:
+   - Cyan fills (buttons, highlights) take DARK text — never white.
+   - Cyan as TEXT/links on light bg uses --text-link (#00708C), not #00D4FF.
+   - Amber = one highlight per screen. Same text rules as cyan.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PRIMITIVES (raw scales — don't use directly in components)
+   -------------------------------------------------------------------------- */
+@theme {
+  /* Slate neutrals */
+  --color-slate-50:  #F7F9FB;
+  --color-slate-100: #EEF2F6;
+  --color-slate-200: #E1E7EE;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #070B14;
+
+  /* Cyan — brand primary (400 = #00D4FF) */
+  --color-cyan-50:  #E6FAFF;
+  --color-cyan-100: #BFF3FF;
+  --color-cyan-200: #80E8FF;
+  --color-cyan-300: #40DEFF;
+  --color-cyan-400: #00D4FF;
+  --color-cyan-500: #00B5DB;
+  --color-cyan-600: #0093B3;
+  --color-cyan-700: #00708C;
+  --color-cyan-800: #00566B;
+  --color-cyan-900: #003B4A;
+
+  /* Amber — secondary accent (500 = #F59E0B) */
+  --color-amber-50:  #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-300: #FCD34D;
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+  --color-amber-800: #92400E;
+  --color-amber-900: #78350F;
+
+  /* Status */
+  --color-green-50:  #E8F8EF;
+  --color-green-400: #4ADE80;
+  --color-green-700: #15803D;
+  --color-red-50:    #FEECEC;
+  --color-red-400:   #F87171;
+  --color-red-700:   #B91C1C;
+  --color-blue-50:   #EAF1FE;
+  --color-blue-400:  #7AA7FF;
+  --color-blue-700:  #1D4ED8;
+
+  /* ------------------------------------------------------------------------
+     SPACING — 4px base. Tailwind v4 derives p-*, m-*, gap-* from this.
+     1=4  2=8  3=12  4=16  6=24  8=32  12=48  16=64  24=96  32=128
+     ------------------------------------------------------------------------ */
+  --spacing: 0.25rem;
+
+  --space-section-y-sm: 5rem;     /* mobile section padding  */
+  --space-section-y-md: 7rem;     /* tablet                  */
+  --space-section-y-lg: 10rem;    /* desktop (bold = airy)   */
+  --space-gutter: 1.25rem;        /* page side padding       */
+  --space-gutter-lg: 2.5rem;
+
+  --container-prose:   42rem;     /* reading width           */
+  --container-content: 68rem;
+  --container-wide:    80rem;
+
+  /* ------------------------------------------------------------------------
+     BREAKPOINTS — mobile-first
+     ------------------------------------------------------------------------ */
+  --breakpoint-xs:  30rem;   /* 480  */
+  --breakpoint-sm:  40rem;   /* 640  */
+  --breakpoint-md:  48rem;   /* 768  */
+  --breakpoint-lg:  64rem;   /* 1024 */
+  --breakpoint-xl:  80rem;   /* 1280 */
+  --breakpoint-2xl: 96rem;   /* 1536 */
+
+  /* ------------------------------------------------------------------------
+     RADIUS — tighter + sharper for a bold feel
+     xs: tags · sm: chips · md: buttons, inputs · lg: cards
+     xl: media, modals · full: avatars, pills
+     ------------------------------------------------------------------------ */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------------
+     SHADOWS — slate-tinted, plus cyan/amber glows for emphasis
+     ------------------------------------------------------------------------ */
+  --shadow-xs: 0 1px 2px 0 rgb(7 11 20 / 0.06);
+  --shadow-sm: 0 1px 2px 0 rgb(7 11 20 / 0.06), 0 2px 4px -1px rgb(7 11 20 / 0.06);
+  --shadow-md: 0 2px 4px -1px rgb(7 11 20 / 0.06), 0 8px 16px -2px rgb(7 11 20 / 0.10);
+  --shadow-lg: 0 4px 6px -2px rgb(7 11 20 / 0.05), 0 16px 32px -4px rgb(7 11 20 / 0.14);
+  --shadow-xl: 0 8px 12px -4px rgb(7 11 20 / 0.08), 0 32px 64px -8px rgb(7 11 20 / 0.22);
+  --shadow-glow-cyan:  0 0 0 1px rgb(0 212 255 / 0.5), 0 8px 32px -4px rgb(0 212 255 / 0.45);
+  --shadow-glow-amber: 0 0 0 1px rgb(245 158 11 / 0.5), 0 8px 32px -4px rgb(245 158 11 / 0.40);
+
+  /* ------------------------------------------------------------------------
+     TYPE (load with next/font)
+     Display: Playfair Display (serif) · Body: Geist Sans · Mono: JetBrains Mono
+     ------------------------------------------------------------------------ */
+  --font-display: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans:    "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --text-xs:   0.75rem;    --text-xs--line-height:   1.5;
+  --text-sm:   0.875rem;   --text-sm--line-height:   1.5;
+  --text-base: 1rem;       --text-base--line-height: 1.65;
+  --text-lg:   1.125rem;   --text-lg--line-height:   1.6;
+  --text-xl:   1.375rem;   --text-xl--line-height:   1.4;
+  --text-2xl:  1.75rem;    --text-2xl--line-height:  1.25;
+  --text-3xl:  clamp(2rem, 1.5rem + 1.8vw, 2.75rem);     --text-3xl--line-height: 1.15;
+  --text-4xl:  clamp(2.5rem, 1.7rem + 3vw, 4rem);        --text-4xl--line-height: 1.05;
+  --text-5xl:  clamp(3rem, 1.8rem + 5vw, 6rem);          --text-5xl--line-height: 1.05;
+  --text-6xl:  clamp(3.5rem, 1.8rem + 7vw, 8rem);        --text-6xl--line-height: 1;
+
+  /* ------------------------------------------------------------------------
+     MOTION
+     ------------------------------------------------------------------------ */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ------------------------------------------------------------------------
+     Z-INDEX
+     ------------------------------------------------------------------------ */
+  --z-base: 0;
+  --z-sticky: 20;
+  --z-dropdown: 40;
+  --z-overlay: 60;
+  --z-modal: 70;
+  --z-toast: 90;
+}
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC TOKENS — use THESE in components (shadcn-compatible)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Backgrounds */
+  --background:      var(--color-slate-50);
+  --surface:         #FFFFFF;
+  --surface-sunken:  var(--color-slate-100);
+  --surface-inverse: var(--color-slate-950);
+
+  /* Text */
+  --foreground:       var(--color-slate-950);   /* ~18:1 */
+  --text-secondary:   var(--color-slate-700);   /* ~10:1 */
+  --muted-foreground: var(--color-slate-600);   /* ~7:1  */
+  --text-disabled:    var(--color-slate-400);
+  --text-inverse:     var(--color-slate-50);
+  --text-link:        var(--color-cyan-700);    /* ~5.7:1 on white */
+  --text-link-hover:  var(--color-cyan-800);
+  --text-accent:      var(--color-amber-700);   /* ~5:1 on white   */
+
+  /* Borders */
+  --border:          var(--color-slate-200);
+  --border-strong:   var(--color-slate-300);
+  --border-emphasis: var(--color-slate-900);    /* bold = hard outlines allowed */
+  --input:           var(--color-slate-300);
+  --ring:            var(--color-cyan-600);
+
+  /* Primary — cyan fill, dark text */
+  --primary:            var(--color-cyan-400);
+  --primary-hover:      var(--color-cyan-500);
+  --primary-foreground: var(--color-slate-950);
+
+  /* Accent (secondary accent) — amber fill, dark text */
+  --accent:            var(--color-amber-500);
+  --accent-hover:      var(--color-amber-600);
+  --accent-foreground: var(--color-slate-950);
+
+  /* Neutral secondary / muted (shadcn) */
+  --secondary:            var(--color-slate-100);
+  --secondary-foreground: var(--color-slate-900);
+  --muted:                var(--color-slate-100);
+
+  /* Card / popover */
+  --card:               var(--surface);
+  --card-foreground:    var(--foreground);
+  --popover:            var(--surface);
+  --popover-foreground: var(--foreground);
+
+  /* Status */
+  --success:        var(--color-green-700);  --success-bg:     var(--color-green-50);
+  --warning:        var(--color-amber-700);  --warning-bg:     var(--color-amber-50);
+  --destructive:    var(--color-red-700);    --destructive-bg: var(--color-red-50);
+  --info:           var(--color-blue-700);   --info-bg:        var(--color-blue-50);
+
+  --shadow-focus: 0 0 0 2px var(--background), 0 0 0 4px var(--color-cyan-600);
+  --radius: var(--radius-md);   /* shadcn base */
+}
+
+.dark {
+  --background:      var(--color-slate-950);
+  --surface:         #0E1524;
+  --surface-sunken:  #040710;
+  --surface-inverse: var(--color-slate-50);
+
+  --foreground:       #E8EEF6;
+  --text-secondary:   #B6C2D3;
+  --muted-foreground: #8493A8;
+  --text-disabled:    #4B5A70;
+  --text-inverse:     var(--color-slate-950);
+  --text-link:        var(--color-cyan-400);
+  --text-link-hover:  var(--color-cyan-300);
+  --text-accent:      var(--color-amber-400);
+
+  --border:          #1B2538;
+  --border-strong:   #2A3752;
+  --border-emphasis: #E8EEF6;
+  --input:           #2A3752;
+  --ring:            var(--color-cyan-400);
+
+  --primary:            var(--color-cyan-400);
+  --primary-hover:      var(--color-cyan-300);
+  --primary-foreground: var(--color-slate-950);
+
+  --accent:            var(--color-amber-500);
+  --accent-hover:      var(--color-amber-400);
+  --accent-foreground: var(--color-slate-950);
+
+  --secondary:            #16203A;
+  --secondary-foreground: #E8EEF6;
+  --muted:                #121B2E;
+
+  --card:               var(--surface);
+  --card-foreground:    var(--foreground);
+  --popover:            var(--surface);
+  --popover-foreground: var(--foreground);
+
+  --success:     var(--color-green-400);  --success-bg:     #0C2418;
+  --warning:     var(--color-amber-400);  --warning-bg:     #2A1F0A;
+  --destructive: var(--color-red-400);    --destructive-bg: #2C1214;
+  --info:        var(--color-blue-400);   --info-bg:        #101D38;
+
+  /* Shadows lean on borders + glow in dark */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 12px 28px -4px rgb(0 0 0 / 0.65);
+  --shadow-xl: 0 28px 56px -8px rgb(0 0 0 / 0.7);
+  --shadow-focus: 0 0 0 2px var(--color-slate-950), 0 0 0 4px var(--color-cyan-400);
+}
+
+/* --------------------------------------------------------------------------
+   3. EXPOSE SEMANTIC TOKENS AS TAILWIND UTILITIES
+      bg-background  text-foreground  border-border  bg-primary  bg-accent …
+   -------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-foreground: var(--foreground);
+  --color-text-secondary: var(--text-secondary);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-text-link: var(--text-link);
+  --color-text-accent: var(--text-accent);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-emphasis: var(--border-emphasis);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-destructive: var(--destructive);
+  --color-destructive-bg: var(--destructive-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+}
+
+/* --------------------------------------------------------------------------
+   4. BASE DEFAULTS
+   -------------------------------------------------------------------------- */
+@layer base {
+  html { background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.015em; font-weight: 700; }
+  a { color: var(--text-link); }
+  a:hover { color: var(--text-link-hover); }
+  :focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: var(--radius-sm); }
+  ::selection { background: var(--color-cyan-400); color: var(--color-slate-950); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
