@@ -53,7 +53,7 @@ const stepsData: StepItem[] = [
     accent: "cyan",
     duration: "4 Days",
     icon: Code2,
-    deliverables: ["Mobile-first website", "1 revision round", "Staging preview"],
+    deliverables: ["Mobile-first website", "3 revisions included", "Staging preview"],
   },
   {
     id: 4,

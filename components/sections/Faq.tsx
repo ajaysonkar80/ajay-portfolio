@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "What's included in the ₹10,000 website build?",
-    a: "A mobile-first website for your local business, WhatsApp button, local SEO setup for Raipur, a contact form, uptime monitoring, and security updates. Delivery is 4 days from the initial deposit.",
+    a: "A mobile-first website for your local business (Home, Services & About pages), WhatsApp button, local SEO setup for Raipur, a contact form, 3 revisions, uptime monitoring, and security updates. Delivery is 4 days from the initial deposit.",
   },
   {
     q: "Is the domain included?",
