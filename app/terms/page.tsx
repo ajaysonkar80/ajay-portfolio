@@ -22,7 +22,7 @@ export default function TermsPage() {
             TERMS OF SERVICE
           </h1>
           <div className="text-white/70 text-sm space-y-1">
-            <p><strong>Ajay Sonkar - Independent Web & AI Automation Consultant</strong></p>
+            <p><strong>Ajay Sonkar - Independent Web Developer</strong></p>
             <p>Website: www.ajaysonkar.com | Email: hello@ajaysonkar.com</p>
             <p>Location: Dhamtari, Chhattisgarh, India</p>
             <p>Effective Date: September 15, 2026</p>
@@ -38,10 +38,10 @@ export default function TermsPage() {
             <h2 className="font-heading font-bold text-amber-500 text-2xl mb-6 flex items-center gap-2">
               <span className="text-amber-500">1.</span> INTRODUCTION & DEFINITIONS
             </h2>
-            <p className="text-white/90 mb-3"><strong className="text-neon">"Service Provider"</strong> refers to Ajay Sonkar operating as an independent web and AI automation consultant through www.ajaysonkar.com.</p>
-            <p className="text-white/90 mb-3"><strong className="text-neon">"Client"</strong> refers to any individual, business entity, or organization that engages Service Provider for consulting, automation, development, or support services.</p>
-            <p className="text-white/90 mb-3"><strong className="text-neon">"Services"</strong> include but are not limited to: business automation, workflow optimization, data integration, custom API development, full-stack web development, AI product engineering, internal tools and custom software development (web-based), retainer support, and related technical consulting.</p>
-            <p className="text-white/90"><strong className="text-neon">"Work Product"</strong> refers to deliverables produced by Service Provider, including but not limited to: code, configurations, documentation, AI-generated outputs, architectural recommendations, and integrated third-party solutions.</p>
+            <p className="text-white/90 mb-3"><strong className="text-neon">"Service Provider"</strong> refers to Ajay Sonkar operating as an independent web developer through www.ajaysonkar.com.</p>
+            <p className="text-white/90 mb-3"><strong className="text-neon">"Client"</strong> refers to any individual, business entity, or organization that engages Service Provider for website development or maintenance services.</p>
+            <p className="text-white/90 mb-3"><strong className="text-neon">"Services"</strong> include: website design and development for local businesses, local SEO setup, WhatsApp button and contact form integration, uptime monitoring, security updates, hosting management, and related technical support.</p>
+            <p className="text-white/90"><strong className="text-neon">"Work Product"</strong> refers to deliverables produced by Service Provider, including but not limited to: website code, configurations, documentation, and integrated third-party solutions.</p>
           </div>
 
           {/* 2. SERVICE SCOPE & BUSINESS ALIGNMENT */}
@@ -53,33 +53,21 @@ export default function TermsPage() {
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
               <span className="text-amber-500">2.1</span> Services Definition
             </h3>
-            <p className="text-white/90 mb-3">Service Provider provides the following core services:</p>
+            <p className="text-white/90 mb-3">Service Provider provides one core service:</p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Business automation and workflow optimization</li>
-              <li>Data integration and real-time analytics</li>
-              <li>Custom API development (FastAPI, Node.js, etc.)</li>
-              <li>Full-stack web development (Next.js, React, etc.)</li>
-              <li>Internal tools and custom software development (web-based)</li>
-              <li>AI product engineering and LLM integration</li>
-              <li>Database design and optimization</li>
-              <li>Retainer support and system maintenance</li>
-              <li>Technical consulting and architectural strategy</li>
+              <li>Website development for local businesses in Raipur — a mobile-first website with WhatsApp button, local SEO, contact form, uptime monitoring, and security updates</li>
             </ul>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">2.2</span> Third-Party Costs (Domain, Hosting, APIs, Software)
+              <span className="text-amber-500">2.2</span> Domain & Third-Party Costs
             </h3>
-            <p className="text-white/90 mb-3">When delivering services, Service Provider may integrate third-party APIs, cloud services, and AI models (e.g., OpenAI, Anthropic Claude, Deepseek, n8n, Supabase). <strong className="text-neon">Client is responsible for all associated costs, including but not limited to:</strong></p>
+            <p className="text-white/90 mb-3"><strong className="text-neon">The domain is paid separately by the Client</strong> and is not included in the project fee or the maintenance plan. Client is responsible for:</p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Domain registration and renewal</li>
-              <li>Hosting and infrastructure (VPS, cloud servers, CDN, etc.)</li>
-              <li>Third-party API usage fees and token costs</li>
-              <li>Software subscription costs and licensing fees</li>
-              <li>AI model API fees (OpenAI, Anthropic, Deepseek, etc.)</li>
-              <li>Email services, payment gateways, and other integrations</li>
+              <li>Domain registration and renewal (billed separately)</li>
+              <li>Any third-party services Client chooses to purchase independently (e.g., premium plugins, stock assets, email services)</li>
             </ul>
-            <p className="text-white/90 mb-3">These costs are separate from Service Provider's professional fees and will be billed to Client as incurred or invoiced separately.</p>
-            <p className="text-white/90 mb-6">Service Provider will provide transparency on estimated third-party costs and seek Client approval before incurring significant expenses. Clients may opt to bring their own domain, hosting, API keys, or subscriptions.</p>
+            <p className="text-white/90 mb-3">Hosting, uptime monitoring, and security updates are covered by the ₹1,000/month maintenance plan.</p>
+            <p className="text-white/90 mb-6">Service Provider will provide transparency on any third-party costs and seek Client approval before incurring expenses.</p>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
               <span className="text-amber-500">2.3</span> Scope of Engagement
@@ -97,62 +85,46 @@ export default function TermsPage() {
           {/* 3. ENGAGEMENT MODELS */}
           <div>
             <h2 className="font-heading font-bold text-amber-500 text-2xl mb-6 flex items-center gap-2">
-              <span className="text-amber-500">3.</span> ENGAGEMENT MODELS
+              <span className="text-amber-500">3.</span> OFFER & ENGAGEMENT
             </h2>
-            <p className="text-white/90 mb-6">Service Provider offers multiple engagement structures based on Client needs.</p>
+            <p className="text-white/90 mb-6">Service Provider offers a single service with straightforward pricing. There is no minimum contract term.</p>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">3.1</span> PROJECT-BASED SERVICES
+              <span className="text-amber-500">3.1</span> Website Development — Starting at ₹10,000 (one-time)
             </h3>
-            <p className="text-white/90 mb-3">Project-based engagements deliver defined deliverables within fixed scope and timeline.</p>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Pricing Structure:</strong></p>
+            <p className="text-white/90 mb-3"><strong className="text-amber-500">Included:</strong></p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Minimum project fee: ₹5,000 per project</li>
-              <li>Pricing varies based on complexity, timeline, and integrations required</li>
-              <li>All project fees are fixed-price (no hourly billing)</li>
+              <li>Mobile-first website for local businesses</li>
+              <li>WhatsApp button for instant enquiries</li>
+              <li>Local SEO setup</li>
+              <li>Contact form</li>
+              <li>Uptime monitoring &amp; security updates</li>
+              <li>Delivery within <strong className="text-neon">4 days from the initial deposit</strong></li>
             </ul>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Project Workflow:</strong></p>
-            <ol className="text-white/90 list-decimal list-inside space-y-2 mb-6 pl-8">
-              <li>Initial consultation and problem definition</li>
-              <li>Scope documentation in SOW</li>
-              <li>Agreed timeline and milestones</li>
-              <li>Payment structure (50% upfront, 50% upon completion)</li>
-              <li>Delivery and acceptance</li>
-            </ol>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Payment Terms for Projects:</strong></p>
+            <p className="text-white/90 mb-3"><strong className="text-amber-500">Payment &amp; Contract:</strong></p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>All projects: 50% upfront to confirm engagement and initiate work</li>
-              <li>Remaining 50% due upon delivery and Client acceptance</li>
-              <li>Invoices due Net 15 (within 15 days of issue)</li>
+              <li><strong className="text-neon">50% of the project fee is payable upfront via UPI</strong> as a deposit</li>
+              <li>A <strong className="text-neon">signed written contract</strong> is required before work starts</li>
+              <li>Remaining 50% is due upon delivery</li>
+              <li>The domain is billed separately</li>
             </ul>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">3.2</span> RETAINER SERVICES
+              <span className="text-amber-500">3.2</span> Maintenance &amp; Hosting — ₹1,000 per month
             </h3>
-            <p className="text-white/90 mb-3">Retainer engagements provide ongoing support, optimization, and maintenance on a fixed monthly basis.</p>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Retainer Scope:</strong></p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Defined hours per month (10, 20, or 40 hours)</li>
-              <li>Monitoring and maintenance of existing systems</li>
-              <li>Performance optimization and bug fixes</li>
-              <li>Strategic recommendations</li>
-              <li>Emergency support (if specified in SOW)</li>
-            </ul>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Change Request Process:</strong></p>
-            <p className="text-white/90 mb-6">New features, architecture changes, or scope expansions are classified as "Change Requests" and quoted separately. Work will not begin on Change Requests until approved in writing.</p>
-            <p className="text-white/90 mb-3"><strong className="text-amber-500">Retainer Terms:</strong></p>
-            <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Minimum engagement: 3 months</li>
-              <li>Billing cycle: Monthly, due by the 5th of each month</li>
-              <li>Unused hours do not roll over</li>
-              <li>Either party may terminate with 30 days notice after minimum period</li>
-              <li>Pricing adjustable with 60 days notice after 6 months</li>
+              <li>Hosting management</li>
+              <li>Uptime monitoring</li>
+              <li>Security updates</li>
+              <li>1 revision per month</li>
+              <li>Billed monthly, starting after the website is delivered</li>
+              <li>Either party may stop the maintenance plan at any time; there is no minimum term</li>
             </ul>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">3.3</span> RETAINER SUPPORT AVAILABILITY
+              <span className="text-amber-500">3.3</span> Client Deliverables &amp; Delays
             </h3>
-            <p className="text-white/90">Service Provider provides support during business hours (Mon-Fri, 9 AM - 6 PM IST). Response times are best-effort; critical production issues receive priority attention.</p>
+            <p className="text-white/90 mb-6">The 4-day delivery window starts from the initial deposit and assumes Client provides all required materials (images, logo, content, business details) promptly. <strong className="text-neon">Delays caused by late or missing client-supplied images, logo, content, or other deliverables are the Client's responsibility</strong> and extend the delivery timeline day-for-day.</p>
           </div>
 
           {/* 4. INTELLECTUAL PROPERTY OWNERSHIP */}
@@ -264,8 +236,9 @@ export default function TermsPage() {
               <span className="text-amber-500">6.1</span> Invoicing & Payment
             </h3>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Invoices are issued upon service delivery or as specified in SOW</li>
-              <li>Payment is due <strong className="text-neon">Net 15</strong> (within 15 days of invoice date)</li>
+              <li><strong className="text-neon">50% deposit via UPI</strong> plus a signed contract is required before work starts</li>
+              <li>Remaining 50% of the project fee is due upon delivery</li>
+              <li>Maintenance of ₹1,000/month is due at the start of each month</li>
               <li>All fees are exclusive of applicable taxes</li>
               <li>GST or other applicable taxes will be added per current Indian tax law (if applicable based on annual turnover)</li>
             </ul>
@@ -275,19 +248,18 @@ export default function TermsPage() {
             </h3>
             <p className="text-white/90 mb-3">Service Provider accepts:</p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
+              <li><strong className="text-neon">UPI payments (primary method)</strong></li>
               <li>Bank transfer (NEFT/RTGS)</li>
-              <li>UPI payments</li>
-              <li>Digital payment gateways</li>
             </ul>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
               <span className="text-amber-500">6.3</span> Late Payment
             </h3>
-            <p className="text-white/90 mb-3">If payment is not received within 30 days of invoice date:</p>
+            <p className="text-white/90 mb-3">If payment is not received within 15 days of invoice date:</p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Service Provider will suspend ongoing retainer services</li>
+              <li>Service Provider may pause work or suspend the maintenance plan (including hosting) until payment is received</li>
               <li>Service Provider may terminate the engagement without further notice</li>
-              <li>Client remains liable for all accrued fees, late charges (1.5% per month), and collection costs</li>
+              <li>Client remains liable for all accrued fees and collection costs</li>
             </ul>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
@@ -296,31 +268,29 @@ export default function TermsPage() {
             <p className="text-white/90">Service Provider's annual turnover from freelance services may fall below the ₹20 Lakh GST registration threshold. <strong className="text-neon">All fees exclude applicable taxes, which will be added if required by Indian tax law.</strong> Clients will be advised if tax registration becomes applicable.</p>
           </div>
 
-          {/* 7. INTELLECTUAL PROPERTY & AI OUTPUTS */}
+          {/* 7. CLIENT MATERIALS & CONTENT */}
           <div>
             <h2 className="font-heading font-bold text-amber-500 text-2xl mb-6 flex items-center gap-2">
-              <span className="text-amber-500">7.</span> INTELLECTUAL PROPERTY & AI OUTPUTS
+              <span className="text-amber-500">7.</span> CLIENT MATERIALS & CONTENT
             </h2>
             
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">7.1</span> AI-Generated Content Disclaimer
+              <span className="text-amber-500">7.1</span> Client Responsibilities
             </h3>
             <div className="bg-gradient-to-br from-amber-500/30 to-transparent border border-amber-500/60 p-6 rounded-lg mb-6">
-              <p className="text-white/90 mb-3"><strong className="text-neon">This is critical:</strong> Work Product may incorporate AI-generated outputs from third-party language models (OpenAI GPT, Anthropic Claude, Deepseek, Gemini, Mercury, etc.). Service Provider makes <strong className="text-neon">no warranty</strong> regarding:</p>
+              <p className="text-white/90 mb-3"><strong className="text-neon">This is critical:</strong> Client is responsible for providing all required materials on time, including:</p>
               <ul className="text-white/90 list-disc list-inside space-y-2 pl-8">
-                <li>Accuracy or correctness of AI-generated code or content</li>
-                <li>Hallucinations, confabulations, or false information produced by AI models</li>
-                <li>Unexpected behavior or edge cases in AI-integrated systems</li>
-                <li>Bias or harmful outputs from integrated AI models</li>
-                <li>Compliance with regulations or ethical standards in AI recommendations</li>
+                <li>Images, photos, and media for the website</li>
+                <li>Logo and brand assets</li>
+                <li>Business details, text content, and contact information</li>
+                <li>Domain access and any third-party accounts required</li>
               </ul>
             </div>
-            <p className="text-white/90 mb-3"><strong className="text-neon">Client Responsibility:</strong> Client is responsible for:</p>
+            <p className="text-white/90 mb-3"><strong className="text-neon">Delays:</strong> Late, missing, or incomplete client materials extend the delivery timeline and are the Client's responsibility.</p>
             <ul className="text-white/90 list-disc list-inside space-y-2 mb-6 pl-8">
-              <li>Testing all AI-integrated systems thoroughly</li>
-              <li>Verifying accuracy of AI outputs before production use</li>
-              <li>Implementing safeguards and human review processes</li>
-              <li>Compliance with regulations regarding AI usage (e.g., GDPR, sector-specific AI regulations)</li>
+              <li>Client warrants that all supplied materials may legally be used on the website</li>
+              <li>Client is responsible for verifying accuracy of their own content before it goes live</li>
+              <li>Service Provider is not liable for claims arising from Client-supplied content, images, or trademarks</li>
             </ul>
           </div>
 
@@ -428,14 +398,14 @@ export default function TermsPage() {
             </h2>
             
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">10.1</span> Termination of Retainer Engagements
+              <span className="text-amber-500">10.1</span> Cancellation by Client
             </h3>
-            <p className="text-white/90 mb-6">Either party may terminate a retainer with <strong className="text-neon">30 days written notice</strong> after the minimum engagement period.</p>
+            <p className="text-white/90 mb-6">Client may cancel at any time by giving written notice. <strong className="text-neon">If Client cancels, Client keeps the domain and the website code</strong>, but the website will be taken offline and will no longer remain live — it will be shown as temporarily unavailable. Any outstanding fees remain payable, and no refund is due for work already completed.</p>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
-              <span className="text-amber-500">10.2</span> Termination of Project Engagements
+              <span className="text-amber-500">10.2</span> Cancellation of Maintenance Plan
             </h3>
-            <p className="text-white/90 mb-6">Project-based engagements may be terminated only upon mutual written agreement.</p>
+            <p className="text-white/90 mb-6">Client may stop the ₹1,000/month maintenance plan at any time. Once maintenance stops, hosting, uptime monitoring, security updates, and revisions cease, and the website will be taken offline.</p>
 
             <h3 className="text-neon font-bold text-lg mb-4 pl-4 border-l-2 border-amber-500">
               <span className="text-amber-500">10.3</span> Termination for Cause

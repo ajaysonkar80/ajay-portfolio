@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Code2, Bot, FolderKanban, Sparkles, BookText, Share2, Zap, Heart, Users, Wrench, DollarSign, Phone, UserCheck, MapPin, Briefcase } from "lucide-react";
+import { Code2, Sparkles, Zap, Heart, Users, Wrench, DollarSign, Phone, UserCheck, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 
@@ -36,9 +36,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-white mx-auto leading-relaxed text-base max-w-2xl"
           >
-            I help local businesses solve technical problems, build digital products,
-            and automate workflows — so you can focus on running your business,
-            not wrestling with technology.
+            I build mobile-first websites for local businesses in Raipur — so you
+            can focus on running your business, not wrestling with technology.
           </motion.p>
         </div>
       </section>
@@ -55,7 +54,7 @@ export default function AboutPage() {
           >
             What I Do
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-2xl mx-auto">
             {services.map((service, i) => (
               <motion.div
                 key={i}
@@ -279,33 +278,8 @@ export default function AboutPage() {
 const services = [
   {
     icon: <Code2 className="w-6 h-6" />,
-    title: "Full-Stack Development",
-    description: "Websites, web apps, and SaaS products that work seamlessly across all devices.",
-  },
-  {
-    icon: <FolderKanban className="w-6 h-6" />,
-    title: "Internal Tools",
-    description: "Custom tools tailored to your specific workflow needs.",
-  },
-  {
-    icon: <Briefcase className="w-6 h-6" />,
-    title: "Business Resources",
-    description: "Access to helpful tools and assets to scale your operations.",
-  },
-  {
-    icon: <Bot className="w-6 h-6" />,
-    title: "Automation & AI",
-    description: "Lead generation, email automation, web scraping, and intelligent workflows.",
-  },
-  {
-    icon: <BookText className="w-6 h-6" />,
-    title: "LaTeX Support",
-    description: "Help with LaTeX documents, formatting, and technical writing.",
-  },
-  {
-    icon: <Share2 className="w-6 h-6" />,
-    title: "Social Media",
-    description: "Content creation and posting for your business social accounts.",
+    title: "Web Development",
+    description: "Mobile-first websites for local businesses in Raipur — with WhatsApp button, local SEO, contact form, uptime monitoring, and security updates.",
   },
 ];
 
@@ -313,12 +287,12 @@ const howIWork = [
   {
     icon: <Zap className="w-5 h-5" />,
     title: "Fast Delivery",
-    description: "Most projects delivered within one week.",
+    description: "Your website delivered in 4 days from the initial deposit.",
   },
   {
     icon: <Heart className="w-5 h-5" />,
     title: "Ongoing Support",
-    description: "Maintenance, updates, and fixes after project delivery.",
+    description: "Maintenance, hosting, and fixes after delivery for ₹1,000/month.",
   },
   {
     icon: <Users className="w-5 h-5" />,
@@ -332,8 +306,8 @@ const howIWork = [
   },
   {
     icon: <DollarSign className="w-5 h-5" />,
-    title: "Flexible Pricing",
-    description: "Monthly retainers (preferred) or value-based pricing. No surprises.",
+    title: "Simple Pricing",
+    description: "From ₹10,000 one-time + ₹1,000/month maintenance. 50% deposit via UPI to start.",
   },
   {
     icon: <Phone className="w-5 h-5" />,

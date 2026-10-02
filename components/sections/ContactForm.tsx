@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-type Tier = "starter" | "core" | "growth" | "custom";
+type Tier = "build" | "maintenance" | "custom";
 
 interface FormData {
   name:           string;
@@ -21,18 +21,14 @@ interface FormData {
 }
 
 const tiers: { id: Tier; price: string; label: string }[] = [
-  { id: "starter", price: "₹3k",  label: "Starter" },
-  { id: "core",    price: "₹7k",  label: "Core"    },
-  { id: "growth",  price: "₹15k", label: "Growth"  },
-  { id: "custom",  price: "Custom", label: "Custom" },
+  { id: "build",       price: "₹10k",     label: "Website Build" },
+  { id: "maintenance", price: "₹1k/mo",   label: "Maintenance"   },
+  { id: "custom",      price: "Custom",   label: "Custom"        },
 ];
 
 const serviceTypes = [
   "Website Development",
-  "AI Automation",
-  "Lead Acquisition System",
-  "Technical Consultation",
-  "Website Maintenance",
+  "Maintenance / Hosting only",
   "Custom / Not sure yet",
 ];
 
@@ -62,7 +58,7 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormData>({
     name: "", phone: "", email: "",
     country: "IN", state: "Chhattisgarh", city: "Raipur",
-    serviceTier: "core", serviceType: "", projectOutline: "",
+    serviceTier: "build", serviceType: "", projectOutline: "",
   });
   const [status,  setStatus]  = useState<"idle"|"loading"|"success"|"error">("idle");
   const [message, setMessage] = useState("");
@@ -98,7 +94,7 @@ export default function ContactForm() {
       setForm({
         name: "", phone: "", email: "",
         country: "IN", state: "Chhattisgarh", city: "Raipur",
-        serviceTier: "core", serviceType: "", projectOutline: "",
+    serviceTier: "build", serviceType: "", projectOutline: "",
       });
     } catch {
       setStatus("error");

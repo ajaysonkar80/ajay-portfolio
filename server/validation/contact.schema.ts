@@ -45,8 +45,8 @@ export const contactSchema = z.object({
 
   // Pricing tier
   serviceTier: z
-    .enum(["starter", "core", "growth", "custom"])
-    .default("core"),
+    .enum(["build", "maintenance", "custom"])
+    .default("build"),
 
   // Service type
   serviceType: z

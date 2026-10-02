@@ -1,43 +1,15 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const services = [
   {
-    icon:        "/web-development.svg", // Replaced emoji with SVG path
+    icon:        "/web-development.svg",
     title:       "Web Development",
-    description: "Fast, mobile-first websites and web apps for local businesses, brands, and startups. Built to rank on Google and convert visitors into paying clients.",
-    features:    ["Custom design & development", "Mobile-first & SEO optimised", "Lead capture integration", "Monthly maintenance included"],
-    cta:         "From ₹7,000/mo",
+    description: "Fast, mobile-first websites for local businesses in Raipur. Built to rank on Google and convert visitors into paying clients.",
+    features:    ["Mobile-first design & development", "Local SEO & WhatsApp button", "Contact form & lead capture", "Hosting & maintenance for ₹1,000/mo"],
+    cta:         "From ₹10,000 one-time",
     color:       "blue",
-    href:        "#contact",
-  },
-  {
-    icon:        "/automation.svg", // Replaced emoji with SVG path
-    title:       "AI Automations",
-    description: "Automate repetitive tasks — WhatsApp follow-ups, lead notifications, data entry, and customer workflows using modern AI tools tailored to your business.",
-    features:    ["WhatsApp & email automation", "Lead follow-up sequences", "AI-powered data workflows", "Monthly performance review"],
-    cta:         "From ₹7,000/mo",
-    color:       "amber",
-    href:        "#contact",
-  },
-  {
-    icon:        "/funnel.svg", // Replaced emoji with SVG path
-    title:       "Lead Acquisition",
-    description: "Full-funnel lead capture systems — landing pages, contact forms, CRM integrations, and email sequences that fill your pipeline with real clients every month.",
-    features:    ["High-converting landing pages", "CRM & form integration", "Email follow-up sequences", "Monthly lead report"],
-    cta:         "From ₹7,000/mo",
-    color:       "blue",
-    href:        "#contact",
-  },
-  {
-    icon:        "/invention.svg", // Replaced emoji with SVG path
-    title:       "Tech Consultation",
-    description: "Not sure what tech you need? Book a 1-on-1 consultation. I'll map out the right solution for your goals and budget — no jargon, no unnecessary upselling.",
-    features:    ["1-on-1 strategy sessions", "Tech stack recommendations", "Roadmap & budget planning", "Ongoing advisory support"],
-    cta:         "Free Consultation",
-    color:       "amber",
     href:        "#contact",
   },
 ];
@@ -51,15 +23,15 @@ export default function Services() {
         <div className="mb-8">
           <span className="badge-blue mb-4">What I Offer</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-            Services Built for{" "}
-            <span className="text-amber">Real Results</span>
+            One Service. Built for{" "}
+            <span className="text-amber">Local Businesses</span>
           </h2>
           <p className="text-white text-lg max-w-xl">
-            Not just pretty websites — systems that bring in actual business.
+            Websites for local businesses in Raipur — not just pretty, but built to bring in actual business.
           </p>
         </div>
 
-        {/* Contract info banner */}
+        {/* Offer info banner */}
         <div
           className="rounded-xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
           style={{
@@ -69,24 +41,22 @@ export default function Services() {
         >
           <div className="flex-1">
             <div className="text-white font-semibold text-sm mb-1">
-              📋 Minimum 6-Month Contract — All Services
+              📋 50% Deposit to Start — No Minimum Contract
             </div>
             <div className="text-white text-sm leading-relaxed">
-              All services require a minimum commitment of 6 months. This ensures
-              enough time to deliver measurable results and build systems that
-              actually work long-term for your business.
+              Pay 50% via UPI with a signed contract and work begins. Your website is
+              delivered in 4 days from the deposit. Domain is billed separately.
             </div>
           </div>
           <div
             className="rounded-lg px-4 py-3 text-center shrink-0"
             style={{ background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.2)" }}
           >
-            <div className="text-neon font-bold text-lg leading-tight">6 mo</div>
-            <div className="text-white text-xs">minimum</div>
+            <div className="text-neon font-bold text-lg leading-tight">4 days</div>
+            <div className="text-white text-xs">delivery</div>
           </div>
         </div>
 
-        
         {/* Service cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((s) => (
@@ -103,7 +73,6 @@ export default function Services() {
                       : "rgba(245,158,11,0.12)",
                   }}
                 >
-                  {/* Updated to use img tag for SVG */}
                   <img src={s.icon} alt={s.title} className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-white">{s.title}</h3>

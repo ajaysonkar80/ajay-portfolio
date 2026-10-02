@@ -38,12 +38,25 @@
       "enabled": false
     },
 
-    "playwright": {
+    "playwright-android": {
       "type": "local",
       "command": [
         "npx",
         "-y",
-        "@playwright/mcp@latest"
+        "@playwright/mcp@latest",
+        "--device=Pixel 7",
+        "--headless"
+      ],
+      "enabled": false
+    },
+    "playwright-desktop": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--viewport-size=1280x800",
+        "--headless"
       ],
       "enabled": false
     },

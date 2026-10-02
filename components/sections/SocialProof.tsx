@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const metrics = [
   { val: "6+", label: "Projects Shipped", color: "blue" },
-  { val: "₹3k", label: "Starts From / Month", color: "amber" },
+  { val: "₹10k", label: "Starts From", color: "amber" },
   { val: "4", label: "Happy Clients", color: "blue" },
   { val: "24hr", label: "Response Time", color: "amber" },
 ];

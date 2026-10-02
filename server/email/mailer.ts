@@ -37,13 +37,12 @@ async function sendEmail(
 
 function buildLeadNotificationHtml(data: ContactFormInput): string {
   const tierLabels: Record<string, string> = {
-    starter: "₹3,000 / mo — Starter",
-    core:    "₹7,000 / mo — Core",
-    growth:  "₹15,000 / mo — Growth",
-    custom:  "Custom / One-time",
+    build:       "₹10,000 one-time — Website Build",
+    maintenance: "₹1,000 / mo — Maintenance",
+    custom:      "Custom",
   };
 
-  const tier = tierLabels[data.serviceTier ?? "core"];
+  const tier = tierLabels[data.serviceTier ?? "build"];
   const location = [data.city, data.state, data.country]
     .filter(Boolean)
     .join(", ");
@@ -165,7 +164,7 @@ export async function sendLeadNotification(
 ): Promise<void> {
   await sendEmail(
     process.env.NOTIFY_EMAIL!,
-    `🔵 New Lead: ${data.name} — ${(data.serviceTier ?? "core").toUpperCase()} plan`,
+    `🔵 New Lead: ${data.name} — ${(data.serviceTier ?? "build").toUpperCase()} plan`,
     buildLeadNotificationHtml(data)
   );
 }

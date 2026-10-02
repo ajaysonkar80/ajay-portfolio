@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     country:        "India",
     state:          "Chhattisgarh",
     city:           "Raipur",
-    serviceTier:    "core" as const,
+    serviceTier:    "build" as const,
     serviceType:    "Web Development",
     budgetRange:    "",
     projectOutline: "This is a test lead to verify Zepto Mail is working correctly.",

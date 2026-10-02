@@ -4,28 +4,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Do I need to pay the full amount upfront?",
-    a: "No. I typically take 50% upfront and 50% on delivery for one-time projects. For monthly plans, billing is at the start of each month.",
+    q: "How does payment work?",
+    a: "50% of the project fee is paid upfront via UPI as a deposit, along with a signed contract — that's when work starts. The remaining 50% is due on delivery. Maintenance is billed ₹1,000 at the start of each month.",
   },
   {
-    q: "Why is there a 6-month minimum contract?",
-    a: "Real results take time. 6 months ensures enough runway to build, test, iterate, and see measurable impact — whether that's more leads, saved hours, or a live product.",
+    q: "What's included in the ₹10,000 website build?",
+    a: "A mobile-first website for your local business, WhatsApp button, local SEO setup for Raipur, a contact form, uptime monitoring, and security updates. Delivery is 4 days from the initial deposit.",
   },
   {
-    q: "What happens if I need work beyond the Core plan?",
-    a: "Core plan covers an agreed monthly scope. Any work beyond that is billed separately at ₹500/hr and always communicated transparently before starting.",
+    q: "Is the domain included?",
+    a: "No. The domain is paid separately by the client. You own your domain throughout the project.",
   },
   {
-    q: "Do I get a discount for committing longer?",
-    a: "Yes! 9-month contracts get 5% off, and 12-month contracts get 10% off your monthly rate. Discounts are calculated upfront and reflected in your invoice.",
+    q: "What does the ₹1,000/month cover?",
+    a: "Hosting, maintenance, uptime monitoring, security updates, and 1 revision per month. It starts after your website is delivered.",
   },
   {
-    q: "Can you work with businesses outside Raipur?",
-    a: "Absolutely. I work with clients across India and internationally. All communication happens via WhatsApp, email, or video calls.",
+    q: "What if my images, logo, or content arrive late?",
+    a: "The delivery timeline shifts day-for-day. Delays caused by client-supplied images, logo, content, or other deliverables are the client's responsibility.",
   },
   {
-    q: "What if I'm not happy with the result?",
-    a: "Every plan includes revision cycles. If something isn't right, we fix it. My goal is that you're fully satisfied before going live.",
+    q: "What happens if I cancel?",
+    a: "You keep your domain and the website code. However, the website will be taken off my hosting and shown as temporarily unavailable — it will not remain live.",
   },
 ];
 

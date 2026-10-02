@@ -5,8 +5,8 @@ import StarField from "@/components/sections/StarField";
 const trustStrip = [
   { icon: "/map-pin-icon.svg", label: "Based in Raipur, CG", alt: "Location" },
   { icon: "/24-hours-color-icon.svg", label: "Replies within 24hrs", alt: "Response time" },
-  { icon: "/gold-coin-rupee-icon.svg", label: "Starts at ₹7,000/mo", alt: "Pricing" },
-  { icon: "/contract.svg", label: "Min. 6-month contracts", alt: "Contract" },
+  { icon: "/gold-coin-rupee-icon.svg", label: "Starts at ₹10,000", alt: "Pricing" },
+  { icon: "/contract.svg", label: "50% deposit to start", alt: "Contract" },
 ];
 
 export default function Hero() {
