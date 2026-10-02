@@ -106,14 +106,24 @@ const StepCard: React.FC<StepCardProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-       className={`group relative flex flex-col justify-between p-6 rounded-2xl cursor-pointer transition-all duration-500 border ${
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+       className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-500 border ${
         isActive
           ? isCyan
             ? "border-cyan-500/50 bg-[#0a1219]/90 shadow-[0_0_35px_rgba(0,200,255,0.12)] scale-[1.02]"
             : "border-amber-500/50 bg-[#16120b]/90 shadow-[0_0_35px_rgba(245,158,11,0.12)] scale-[1.02]"
-          : "border-white/5 bg-[#070b10]/60 hover:border-white/20 hover:bg-[#0c1219]/80"
+          : "border-white/5 bg-[#070b10]/60 hover:border-white/20 hover:bg-[#0c1219]/80 focus-visible:border-cyan-500/60"
       }`}
     >
+
       {/* Dynamic Cursor Spotlight Effect */}
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -124,7 +134,7 @@ const StepCard: React.FC<StepCardProps> = ({
 
       <div className="relative z-10">
         {/* Step Indicator Pill / Ring */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6 sm:mb-8 gap-2">
           <div className="relative flex items-center justify-center">
             {isActive && (
               <span
@@ -222,7 +232,7 @@ export default function Process(): React.JSX.Element {
   const isCurrentCyan = currentStepData.accent === "cyan";
 
   return (
-    <section className="relative w-full bg-[#03070b] text-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
+    <section className="relative w-full bg-[#03070b] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Background Ambience / Subtle Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-30"
@@ -234,7 +244,7 @@ export default function Process(): React.JSX.Element {
 
        <div className="relative max-w-5xl mx-auto">
         {/* Header Section */}
-        <div className="max-w-3xl mb-16 md:mb-20">
+        <div className="max-w-3xl mb-10 sm:mb-16 md:mb-20">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-xs sm:text-sm font-medium tracking-wide mb-6 shadow-[0_0_15px_rgba(0,200,255,0.15)]">
             <Sparkles className="w-3.5 h-3.5 animate-pulse" />
@@ -274,8 +284,9 @@ export default function Process(): React.JSX.Element {
         </div>
 
         {/* Deep Dive Milestone Preview Drawer */}
-         <div className="mt-10 p-6 rounded-2xl border border-white/10 bg-[#080d14]/70 backdrop-blur-md">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/5">
+         <div className="mt-10 p-4 sm:p-6 rounded-2xl border border-white/10 bg-[#080d14]/70 backdrop-blur-md">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 pb-6 border-b border-white/5">
+
             <div className="flex items-center gap-4">
               <div
                 className={`p-3 rounded-xl border ${
@@ -301,7 +312,7 @@ export default function Process(): React.JSX.Element {
               <button
                 type="button"
                 onClick={() => setIsAutoPlaying((prev) => !prev)}
-                className={`px-4 py-2 rounded-lg text-xs font-mono border transition-all ${
+                className={`min-h-11 px-4 py-2.5 rounded-lg text-xs font-mono border transition-all ${
                   isAutoPlaying
                     ? "border-cyan-500 bg-cyan-950/40 text-cyan-300 shadow-[0_0_12px_rgba(0,200,255,0.25)]"
                     : "border-white/10 text-neutral-400 hover:text-white hover:border-white/20"
@@ -313,7 +324,7 @@ export default function Process(): React.JSX.Element {
               <button
                 type="button"
                 onClick={() => setActiveStep((prev) => (prev % stepsData.length) + 1)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono bg-white/10 hover:bg-white/15 text-white transition-colors"
+                className="flex min-h-11 items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-mono bg-white/10 hover:bg-white/15 text-white transition-colors"
               >
                 <span>Next Step</span>
                 <ArrowRight className="w-3.5 h-3.5" />

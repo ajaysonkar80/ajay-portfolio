@@ -31,7 +31,7 @@ export function Footer() {
                 key={l.label}
                 asChild
                 variant="ghost"
-                className="h-auto px-2 py-1 text-xs text-white hover:text-white hover:bg-transparent transition-colors"
+                className="h-auto px-3 py-2 text-xs text-white hover:text-white hover:bg-transparent transition-colors"
               >
                 <Link
                   href={l.href}
@@ -62,7 +62,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95 no-underline"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95 no-underline"
       style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}
     >
       <img 

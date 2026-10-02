@@ -106,11 +106,11 @@ export default function ContactForm() {
   const errClass   = "text-red-400 text-xs mt-1";
 
   return (
-    <section id="contact" className="py-24 px-6">
+    <section id="contact" className="py-16 sm:py-24 px-6 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 sm:mb-14">
           <span className="badge-blue mb-4">Ready to Start?</span>
          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
           Let&apos;s <span className="text-neon">Work Together</span>
@@ -121,7 +121,8 @@ export default function ContactForm() {
         </div>
 
            <Card className="glass border-0 bg-transparent">
-           <CardContent className="p-6">
+           <CardContent className="p-4 sm:p-6">
+
             {status === "success" ? (
               <div className="text-center py-12">
                 <div className="text-5xl mb-4">🎉</div>
@@ -144,8 +145,11 @@ export default function ContactForm() {
                 {/* Name + Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className={labelClass}>Your Name *</label>
+                    <label htmlFor="contact-name" className={labelClass}>Your Name *</label>
                     <input
+                      id="contact-name"
+                      name="name"
+                      autoComplete="name"
                       className="input-neon"
                       placeholder="Rahul Sharma"
                       value={form.name}
@@ -155,8 +159,13 @@ export default function ContactForm() {
                     {errors.name && <p className={errClass}>{errors.name[0]}</p>}
                   </div>
                   <div>
-                    <label className={labelClass}>Phone Number *</label>
+                    <label htmlFor="contact-phone" className={labelClass}>Phone Number *</label>
                     <input
+                      id="contact-phone"
+                      name="phone"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
                       className="input-neon"
                       placeholder="+91 XXXXXXXXXX"
                       value={form.phone}
@@ -168,9 +177,13 @@ export default function ContactForm() {
 
                 {/* Email */}
                 <div>
-                  <label className={labelClass}>Email Address *</label>
+                  <label htmlFor="contact-email" className={labelClass}>Email Address *</label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
+                    inputMode="email"
+                    autoComplete="email"
                     className="input-neon"
                     placeholder="you@example.com"
                     value={form.email}
@@ -203,8 +216,10 @@ export default function ContactForm() {
 
                 {/* Project outline */}
                 <div>
-                  <label className={labelClass}>Message</label>
+                  <label htmlFor="contact-message" className={labelClass}>Message</label>
                   <textarea
+                    id="contact-message"
+                    name="projectOutline"
                     className="input-neon"
                     placeholder="Describe your business, what you want to achieve, and any specific requirements..."
                     rows={4}
@@ -243,17 +258,17 @@ export default function ContactForm() {
                 </Button>
 
                 {/* Alt contacts */}
-                <div className="text-center text-sm text-white pt-1">
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm text-white pt-1">
                   Prefer to talk directly?&nbsp;
-                  <Button asChild variant="link" className="h-auto p-0 text-sm font-semibold" style={{ color: "#00D4FF" }}>
+                  <Button asChild variant="link" className="h-auto px-1 py-2.5 text-sm font-semibold" style={{ color: "#00D4FF" }}>
                     <Link href="https://wa.me/918319928445" target="_blank" rel="noreferrer">WhatsApp</Link>
                   </Button>
                   &nbsp;·&nbsp;
-                  <Button asChild variant="link" className="h-auto p-0 text-sm font-semibold" style={{ color: "#F59E0B" }}>
+                  <Button asChild variant="link" className="h-auto px-1 py-2.5 text-sm font-semibold" style={{ color: "#F59E0B" }}>
                     <Link href="#contact">Book a Free Call</Link>
                   </Button>
                   &nbsp;·&nbsp;
-                  <Button asChild variant="link" className="h-auto p-0 text-sm font-semibold" style={{ color: "#00D4FF" }}>
+                  <Button asChild variant="link" className="h-auto px-1 py-2.5 text-sm font-semibold" style={{ color: "#00D4FF" }}>
                     <Link href="mailto:hello@ajaysonkar.com">Email</Link>
                   </Button>
                 </div>

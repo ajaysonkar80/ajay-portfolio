@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import React, { useState, useEffect, useCallback } from "react";
 import {
@@ -68,13 +68,13 @@ function WebDevCard() {
   }, [triggerSimulation]);
 
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_35px_-8px_rgba(6,182,212,0.18)]">
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-6 backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_35px_-8px_rgba(6,182,212,0.18)]">
       {/* Top ambient highlight */}
       <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 transition-opacity duration-300 group-hover:opacity-100" />
 
       {/* Header */}
       <div>
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10 text-cyan-400 shadow-inner">
               <Code2 className="h-5 w-5" />
@@ -91,7 +91,7 @@ function WebDevCard() {
             </div>
           </div>
 
-          <span className="rounded border border-cyan-900/80 bg-cyan-950/60 px-2.5 py-0.5 font-mono text-[11px] text-cyan-300">
+          <span className="hidden sm:inline-block rounded border border-cyan-900/80 bg-cyan-950/60 px-2.5 py-0.5 font-mono text-[11px] text-cyan-300">
             Vite 6.0 HMR
           </span>
         </div>
@@ -148,7 +148,7 @@ function WebDevCard() {
               <button
                 type="button"
                 onClick={triggerSimulation}
-                className="flex items-center gap-1 rounded border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-cyan-300 transition-colors hover:bg-cyan-500/20 active:scale-95"
+                className="flex min-h-7 items-center gap-1 rounded border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1.5 text-cyan-300 transition-colors hover:bg-cyan-500/20 active:scale-95"
               >
                 <RotateCw className="h-3 w-3" />
                 Replay
@@ -259,7 +259,7 @@ function WebDevCard() {
                   </div>
 
                   <div className="py-1 text-center">
-                    <span className="inline-block rounded-full border border-cyan-500/30 bg-cyan-500/10 px-1.5 py-0.5 font-mono text-[8px] text-cyan-300">
+                    <span className="inline-block rounded-full border border-cyan-500/30 bg-cyan-500/10 px-1.5 py-0.5 font-mono text-[9px] text-cyan-300">
                       Edge Hydration 100%
                     </span>
 
@@ -267,7 +267,7 @@ function WebDevCard() {
                       Zero Latency Engine
                     </h4>
 
-                    <p className="mt-0.5 text-[8px] leading-snug text-slate-400">
+                    <p className="mt-0.5 text-[9px] leading-snug text-slate-400">
                       Distributed static-first infrastructure.
                     </p>
                   </div>
@@ -280,16 +280,16 @@ function WebDevCard() {
                           s === "ready" ? "deployed" : "ready"
                         )
                       }
-                      className={`rounded px-2 py-1 font-mono text-[9px] font-bold transition-all ${
+                      className={`min-h-6 rounded px-2.5 py-1.5 font-mono text-[10px] font-bold transition-all ${
                         siteStat === "deployed"
                           ? "bg-emerald-400 text-black"
                           : "bg-cyan-500 text-black hover:bg-cyan-400"
                       }`}
                     >
-                      {siteStat === "deployed" ? "âœ“ Active" : "Deploy"}
+                      {siteStat === "deployed" ? "✓ Active" : "Deploy"}
                     </button>
 
-                    <span className="rounded border border-slate-800 bg-slate-900 px-2 py-1 font-mono text-[9px] text-slate-400">
+                    <span className="rounded border border-slate-800 bg-slate-900 px-2.5 py-1.5 font-mono text-[10px] text-slate-400">
                       Docs
                     </span>
                   </div>
@@ -297,7 +297,7 @@ function WebDevCard() {
 
                 <div className="mt-2 grid grid-cols-2 gap-1 border-t border-slate-800/70 pt-1.5 text-center font-mono">
                   <div className="rounded border border-slate-800/80 bg-black/40 p-1">
-                    <span className="block text-[7px] text-slate-500">
+                    <span className="block text-[8px] text-slate-500">
                       LIGHTHOUSE
                     </span>
 
@@ -307,7 +307,7 @@ function WebDevCard() {
                   </div>
 
                   <div className="rounded border border-slate-800/80 bg-black/40 p-1">
-                    <span className="block text-[7px] text-slate-500">
+                    <span className="block text-[8px] text-slate-500">
                       TTFB SPEED
                     </span>
 
@@ -368,7 +368,7 @@ export default function Services() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-slate-900/80 px-3.5 py-1 text-xs font-mono font-medium uppercase tracking-wider text-cyan-400 mb-4">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
             The Only Service I Offer

@@ -48,7 +48,7 @@ export default function Hero() {
           Open to projects — Raipur &amp; Remote
         </p>
 
-        <h1 className="font-heading font-black text-white mb-6 text-balance max-w-2xl mx-auto text-3xl md:text-4xl lg:text-[3.5rem] leading-[1.1]">
+        <h1 className="font-heading font-black text-white mb-6 text-balance max-w-2xl mx-auto text-[2rem] sm:text-4xl lg:text-[3.5rem] leading-[1.08] sm:leading-[1.1]">
           Get a website that brings you customers.
         </h1>
 
@@ -56,11 +56,11 @@ export default function Hero() {
           Your competitors are taking away the customers that should be yours.
         </p>
 
-        {/* CTAs — min 44px touch targets */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+        {/* CTAs — stacked, full-width on phones (thumb-reach), inline from sm */}
+        <div className="flex flex-col items-stretch justify-center gap-3 mb-10 sm:flex-row sm:items-center sm:gap-4 sm:mb-12">
           <Button
             asChild
-            className="btn-neon h-auto min-h-11 px-6 py-3 text-sm rounded-md"
+            className="btn-neon h-auto min-h-11 w-full px-6 py-3 text-sm rounded-md sm:w-auto"
             style={{ background: "#00D4FF", color: "#080c14", border: "none" }}
           >
             {/* TODO: replace href with the production WhatsApp link (owner-managed) */}
@@ -70,7 +70,7 @@ export default function Hero() {
           <Button
             asChild
             variant="outline"
-            className="btn-outline h-auto min-h-11 px-6 py-3 text-sm rounded-md"
+            className="btn-outline h-auto min-h-11 w-full px-6 py-3 text-sm rounded-md sm:w-auto"
             style={{
               background: "transparent",
               color: "#00D4FF",
@@ -82,7 +82,7 @@ export default function Hero() {
         </div>
 
         {/* Trust strip */}
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-6 sm:gap-y-4">
           {trustStrip.map((item) => (
             <li key={item.label} className="flex items-center gap-2 text-sm text-white">
               <Image

@@ -33,9 +33,9 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-16 sm:py-24 px-6">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 sm:mb-14">
           <span className="badge-blue mb-4">FAQ</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             Common <span className="text-amber">Questions</span>

@@ -88,18 +88,34 @@
 
   html {
     scroll-behavior: smooth;
+    /* Fixed navbar is 64px — keep anchor targets (#contact, #projects) visible */
+    scroll-padding-top: 5rem;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
+    /* clip (not hidden) — no scroll container, so fixed/sticky still work */
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,212,255,0.10) 0%, transparent 60%),
       radial-gradient(ellipse 40% 40% at 90% 80%,  rgba(0,128,255,0.05) 0%, transparent 50%);
     background-attachment: fixed;
+  }
+
+  @media (max-width: 767px) {
+    /* iOS Safari repaints `fixed` backgrounds on every scroll frame */
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  /* Mobile tap feedback on links/cards */
+  a, button {
+    -webkit-tap-highlight-color: rgba(0, 212, 255, 0.22);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -330,6 +346,13 @@
     color: #64748b;
   }
 
+  @media (max-width: 767px) {
+    /* 16px stops iOS Safari from auto-zooming the page on field focus */
+    .input-neon {
+      font-size: 16px;
+    }
+  }
+
   /* Elements */
   .section-divider {
     height: 1px;
@@ -497,5 +520,19 @@
   ::selection {
     background: #06b6d4;
     color: white;
+  }
+}
+/* --- Reduced Motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

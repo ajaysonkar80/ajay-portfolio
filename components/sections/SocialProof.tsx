@@ -44,11 +44,11 @@ export function Metrics() {
               key={m.label}
               className={`border-0 bg-transparent ${m.color === "amber" ? "glass-amber" : "glass"}`}
             >
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 sm:p-6 text-center">
                 <div
                   className="font-heading font-bold mb-1"
                   style={{
-                    fontSize: "2rem",
+                    fontSize: "clamp(1.75rem, 6vw, 2rem)",
                     color: m.color === "amber" ? "#F59E0B" : "#00D4FF",
                   }}
                 >
@@ -66,9 +66,9 @@ export function Metrics() {
 
 export function Testimonials() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-16 sm:py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 sm:mb-14">
           <span className="badge-blue mb-4">Social Proof</span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             What <span className="text-amber">Clients Say</span>
@@ -80,7 +80,7 @@ export function Testimonials() {
               key={t.name}
               className={`border-0 bg-transparent ${t.color === "amber" ? "glass-amber" : "glass"}`}
             >
-              <CardContent className="p-6">
+              <CardContent className="p-5 sm:p-6">
                 <div className="text-amber text-sm mb-3" aria-hidden="true">
                   ★★★★★
                 </div>

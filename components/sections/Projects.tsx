@@ -40,10 +40,10 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-16 sm:py-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-10 sm:mb-14">
           <span className="badge-blue mb-4">Selected Work</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Projects That <span className="text-neon">Deliver</span>
@@ -98,7 +98,7 @@ export default function Projects() {
                   </div>
 
                   {/* Title row */}
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <h3 className="font-heading text-base font-bold text-white">
                       {p.title}
                     </h3>
