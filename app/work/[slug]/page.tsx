@@ -76,7 +76,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Back button */}
-      <section className="py-8 px-6">
+      <section className="pt-24 pb-8 px-6">
         <div className="max-w-5xl mx-auto">
           <Link
             href="/work"

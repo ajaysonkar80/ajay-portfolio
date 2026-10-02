@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Button asChild className="btn-amber h-auto text-sm px-5 py-2.5" style={{ background: "#F59E0B", color: "#080c14", border: "none" }}>
-            <Link href="#contact">Hire Me</Link>
+            <Link href="/#contact">Hire Me</Link>
           </Button>
         </div>
 
@@ -87,7 +87,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Button asChild className="mt-4 w-full btn-amber h-auto py-3 text-sm" style={{ background: "#F59E0B", color: "#080c14", border: "none" }}>
-            <Link href="#contact" onClick={() => setMenuOpen(false)}>Hire Me</Link>
+            <Link href="/#contact" onClick={() => setMenuOpen(false)}>Hire Me</Link>
           </Button>
         </div>
       )}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Geist, Geist_Mono } from "next/font/google";
 import { MotionProvider } from "@/components/motion-provider";
+import Navbar from "@/components/Navbar";
+import { Footer, WhatsAppButton } from "@/components/sections/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -65,7 +67,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <Navbar />
         <MotionProvider>{children}</MotionProvider>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
