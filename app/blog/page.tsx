@@ -1,5 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Card, CardContent, CardHeader } from "@/components/ui/card"; // Assuming you have shadcn installed
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Articles on web development, Next.js, and building fast websites for small businesses — by Ajay Sonkar, website developer in Raipur.",
+};
 
 // --- Dummy DB Fetch Function ---
 // Replace this with your actual database call (e.g., Prisma, Supabase, CMS)

@@ -1,9 +1,14 @@
-"use client";
-
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Website development from ₹10,000 one-time and ₹1,000/month maintenance & hosting. No contracts, 50% UPI deposit to start.",
+};
 
 const plans = [
   {

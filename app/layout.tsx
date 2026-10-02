@@ -27,26 +27,44 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ajay Sonkar | Senior Frontend Developer",
+    default: "Ajay Sonkar | Website Developer in Raipur",
     template: "%s | Ajay Sonkar",
   },
   description:
-    "Websites and apps that turn visitors into customers. Senior frontend developer specializing in React, Next.js, and high-performance design.",
+    "Website developer in Raipur building mobile-first websites for local businesses — WhatsApp button, local SEO, contact form and 4-day delivery from ₹10,000, plus ₹1,000/month maintenance.",
+  keywords: [
+    "website developer in Raipur",
+    "web development Raipur",
+    "website design Chhattisgarh",
+    "freelance web developer Raipur",
+    "local business website India",
+    "small business website Raipur",
+    "website maintenance India",
+  ],
   metadataBase: new URL("https://ajaysonkar.com"),
   openGraph: {
-    title: "Ajay Sonkar | Senior Frontend Developer",
+    title: "Ajay Sonkar | Website Developer in Raipur",
     description:
-      "Websites and apps that turn visitors into customers.",
+      "Mobile-first websites for local businesses in Raipur — delivered in 4 days from ₹10,000, plus ₹1,000/month maintenance.",
     url: "https://ajaysonkar.com",
     siteName: "Ajay Sonkar",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ajay Sonkar — Website Developer in Raipur",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "Ajay Sonkar | Senior Frontend Developer",
+    card: "summary_large_image",
+    title: "Ajay Sonkar | Website Developer in Raipur",
     description:
-      "Websites and apps that turn visitors into customers.",
+      "Mobile-first websites for local businesses in Raipur — delivered in 4 days from ₹10,000, plus ₹1,000/month maintenance.",
+    images: ["/og-image.png"],
   },
 };
 

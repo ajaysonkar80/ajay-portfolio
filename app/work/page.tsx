@@ -23,8 +23,9 @@ interface ProjectWithCaseStudy {
 }
 
 export const metadata = {
-  title: "Work | Ajay Sonkar",
-  description: "Selected projects and case studies showcasing AI systems, web applications, and automation tools built for real businesses.",
+  title: "Selected Work",
+  description:
+    "Selected websites and web app projects by Ajay Sonkar, website developer in Raipur.",
 };
 
 export default async function WorkPage() {

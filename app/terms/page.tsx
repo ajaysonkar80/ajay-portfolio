@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Terms of Service | Ajay Sonkar",
-  description: "Terms of Service for Ajay Sonkar portfolio",
+  title: "Terms of Service",
+  description:
+    "Terms of Service for website development and maintenance services provided by Ajay Sonkar (ajaysonkar.com).",
 };
 
 export default function TermsPage() {

@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Privacy Policy | Ajay Sonkar",
-  description: "Privacy Policy for Ajay Sonkar portfolio",
+  title: "Privacy Policy",
+  description:
+    "Privacy Policy for ajaysonkar.com — how visitor data and contact-form enquiries are collected, used, and protected.",
 };
 
 export default function PrivacyPage() {
